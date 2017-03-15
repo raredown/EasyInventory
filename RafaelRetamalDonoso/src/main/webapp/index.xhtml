@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <h:outputStylesheet library="css" name="bootswatch.css"  />
+        <h:outputStylesheet library="css" name="variable.css"  />
+        <h:outputStylesheet library="css" name="principal.css"  />
+    </h:head>
+    <h:body>
+        <ui:composition template="plantilla/plantilla.xhtml">
+            <ui:define name="contenido">
+
+
+                <div class="container-fluid">
+
+                    <div class="login-area">
+                        <div class="bg-image">
+                            <div class="login-signup">
+                                <div class="container">
+                                    <div class="login-header">
+                                        <div class="row">
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <div class="login-logo">
+                                                    <h:graphicImage library="images" name="logogris.png" />
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <div class="login-details">
+                                                    <ul class="nav nav-tabs navbar-right">
+                                                        <li><a data-toggle="tab" href="#register">Registro</a></li>
+                                                        <li class="active"><a data-toggle="tab" href="#login">Login</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="tab-content">
+                                        <div id="register" class="tab-pane">
+                                            <div class="login-inner">
+                                                <div class="title">
+                                                    <h1>Bienvenido </h1>
+                                                </div>
+                                                <div class="login-form">
+                                                    <form>
+                                                        <div class="form-details">
+                                                            <label class="user">
+                                                                <input type="text" name="username" placeholder="usuario" id="username"/>
+                                                            </label>
+
+                                                            <label class="pass">
+                                                                <input type="password" name="passsword" placeholder="Contraseña" id="password"/>
+                                                            </label>
+                                                            <label class="pass">
+                                                                <input type="password" name="passsword" placeholder="Repita la contraseña" id="password"/>
+                                                            </label>
+                                                            <label class="nombre">
+                                                                <input type="text" name="nombre" placeholder="nombre" id="nombre"/>
+                                                            </label>
+                                                            <label class="apellido">
+                                                                <input type="text" name="apellido" placeholder="apellidos" id="apellido"/>
+                                                            </label>
+                                                            <label class="telefono">
+                                                                <input type="text" name="telefono" placeholder="telefono" id="telefono"/>
+                                                            </label>
+                                                        </div>
+                                                        <button type="submit" class="btn btn-primary" onsubmit="">Enviar</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="login" class="tab-pane fade in active">
+                                            <div class="login-inner">
+                                                <div class="title">
+                                                    <h1>Bienvenido <span>de nuevo!</span></h1>
+                                                </div>
+                                                <div class="login-form">
+                                                    <form>
+                                                        <div class="form-details">
+                                                            <label class="user">
+                                                                <input type="text" name="username" placeholder="usuario" id="username"/>
+                                                            </label>
+                                                            <label class="pass">
+                                                                <input type="password" name="passsword" placeholder="Contraseña" id="password"/>
+                                                            </label>
+                                                        </div>
+                                                        <button type="submit" class="btn btn-primary" onsubmit="">Enviar</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                </div>
+            </ui:define>
+        </ui:composition>
+
+    </h:body>
+</html>
+
