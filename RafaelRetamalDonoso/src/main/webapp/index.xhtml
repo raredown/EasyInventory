@@ -18,6 +18,7 @@
         <h:outputStylesheet library="css" name="principal.css"  />
     </h:head>
     <h:body>
+        
         <ui:composition template="plantilla/plantilla.xhtml">
             <ui:define name="contenido">
 
@@ -56,14 +57,16 @@
                                                     <h1>Bienvenido </h1>
                                                 </div>
                                                 <div class="login-form">
-                                                    <form>
+                                                    <h:form id="formularioEntrada">
                                                         <div class="form-details">
                                                             <label class="user">
-                                                                <input type="text" name="username" placeholder="usuario" id="username"/>
+                                                                <!--<input type="text" name="username" placeholder="usuario" id="username"/>-->
+                                                                <h:inputText value="#{usuario.username}" id="username" ></h:inputText>
                                                             </label>
 
                                                             <label class="pass">
-                                                                <input type="password" name="passsword" placeholder="Contraseña" id="password"/>
+                                                                <h:inputText value="#{usuario.pasword}" id="pasword"></h:inputText>
+                                                                <!--<input type="password" name="passsword" placeholder="Contraseña" id="password"/>-->
                                                             </label>
                                                             <label class="pass">
                                                                 <input type="password" name="passsword" placeholder="Repita la contraseña" id="password"/>
@@ -78,8 +81,9 @@
                                                                 <input type="text" name="telefono" placeholder="telefono" id="telefono"/>
                                                             </label>
                                                         </div>
-                                                        <button type="submit" class="btn btn-primary" onsubmit="">Enviar</button>
-                                                    </form>
+                                                        <h:commandButton value="Enviar" action="#{usuario.add()}" class="btn btn-primary" ></h:commandButton>
+                                                        <!--<button type="submit" class="btn btn-primary" onsubmit="">Enviar</button>-->
+                                                    </h:form>
                                                 </div>
                                             </div>
                                         </div>
