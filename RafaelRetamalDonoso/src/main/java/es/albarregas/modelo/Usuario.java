@@ -7,15 +7,21 @@ package es.albarregas.modelo;
 
 import es.albarregas.dao.IGenericoDAO;
 import es.albarregas.daofactory.DAOFactory;
+import java.io.IOException;
 import java.io.Serializable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  *
@@ -34,6 +40,8 @@ public class Usuario implements Serializable {
     private String pasword;
     private String tipo;
     private int idPrestatario;
+//    @Transient
+//    private String password2;
 
     public int getIdUsuarios() {
         return idUsuarios;
@@ -74,7 +82,7 @@ public class Usuario implements Serializable {
     public void setIdPrestatario(int idPrestatario) {
         this.idPrestatario = idPrestatario;
     }
-    public void add(){
+    public String add(){
     
          DAOFactory daof = DAOFactory.getDAOFactory();
 //        IPersonaDAO adao = daof.getPersonaDAO();
@@ -84,7 +92,12 @@ public class Usuario implements Serializable {
         usuario.setUsername(this.username);
         usuario.setIdUsuarios(this.idUsuarios);
         gdao.add(usuario);
-        
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("page1.xhtml");
+        } catch (IOException ex) {
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "success";
     
     }
     

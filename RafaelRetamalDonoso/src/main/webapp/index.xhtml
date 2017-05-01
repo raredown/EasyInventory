@@ -19,7 +19,7 @@
         <h:outputStylesheet library="css" name="principal.css"  />
     </h:head>
     <h:body>
-        
+
         <ui:composition template="plantilla/plantilla.xhtml">
             <ui:define name="contenido">
 
@@ -59,18 +59,24 @@
                                                 </div>
                                                 <div class="login-form">
                                                     <h:form id="formularioEntrada">
+                                                        <p:growl id="growl" showDetail="true" sticky="true" /> 
+<!--                                                        <p:messages id="messages" showDetail="true" autoUpdate="true" />-->
                                                         <div class="form-details">
+                                                            
                                                             <label class="user">
                                                                 <!--<input type="text" name="username" placeholder="usuario" id="username"/>-->
-                                                                <p:inputText value="#{usuario.username}" id="username" placeholder="search"></p:inputText>
+                                                                <p:inputText  title="Pseudo" value="#{usuario.username}" id="username" placeholder="usuario" validatorMessage="Usuario no valido" required="true" requiredMessage="Usuario requerido"></p:inputText>
                                                             </label>
-
+                                                            
                                                             <label class="pass">
-                                                                <h:inputText value="#{usuario.pasword}" id="pasword"></h:inputText>
+
+                                                                <p:password value="#{usuario.pasword}" match="pwd2" id="pasword" placeholder="contraseña" required="true" feedback="true"
+                                                                            weakLabel="Debil"
+                                                                            goodLabel="Media" strongLabel="Fuerte" inline="true" validatorMessage="contraseña no iguales" requiredMessage="La contraseña es requerida" label="asd"></p:password>
                                                                 <!--<input type="password" name="passsword" placeholder="Contraseña" id="password"/>-->
                                                             </label>
                                                             <label class="pass">
-                                                                <input type="password" name="passsword" placeholder="Repita la contraseña" id="password"/>
+                                                                <p:password value="#{usuario.pasword}" id="pwd2" placeholder="contraseña" required="true"  requiredMessage="Repite su contraseña"></p:password>
                                                             </label>
                                                             <label class="nombre">
                                                                 <input type="text" name="nombre" placeholder="nombre" id="nombre"/>
@@ -82,7 +88,8 @@
                                                                 <input type="text" name="telefono" placeholder="telefono" id="telefono"/>
                                                             </label>
                                                         </div>
-                                                        <h:commandButton value="Enviar" action="#{usuario.add()}" class="btn btn-primary" ></h:commandButton>
+                                                     
+                                                        <p:commandButton value="Enviar" actionListener="#{usuario.add()}" class="btn btn-primary" update="growl" ></p:commandButton>
                                                         <!--<button type="submit" class="btn btn-primary" onsubmit="">Enviar</button>-->
                                                     </h:form>
                                                 </div>
