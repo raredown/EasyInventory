@@ -60,14 +60,14 @@
                                                 <div class="login-form">
                                                     <h:form id="formularioEntrada">
                                                         <p:growl id="growl" showDetail="true" sticky="true" /> 
-<!--                                                        <p:messages id="messages" showDetail="true" autoUpdate="true" />-->
+                                                        <!--                                                        <p:messages id="messages" showDetail="true" autoUpdate="true" />-->
                                                         <div class="form-details">
-                                                            
+
                                                             <label class="user">
                                                                 <!--<input type="text" name="username" placeholder="usuario" id="username"/>-->
                                                                 <p:inputText  title="Pseudo" value="#{usuario.username}" id="username" placeholder="usuario" validatorMessage="Usuario no valido" required="true" requiredMessage="Usuario requerido"></p:inputText>
                                                             </label>
-                                                            
+
                                                             <label class="pass">
 
                                                                 <p:password value="#{usuario.pasword}" match="pwd2" id="pasword" placeholder="contraseña" required="true" feedback="true"
@@ -88,7 +88,7 @@
                                                                 <input type="text" name="telefono" placeholder="telefono" id="telefono"/>
                                                             </label>
                                                         </div>
-                                                     
+
                                                         <p:commandButton value="Enviar" actionListener="#{usuario.add()}" class="btn btn-primary" update="growl" ></p:commandButton>
                                                         <!--<button type="submit" class="btn btn-primary" onsubmit="">Enviar</button>-->
                                                     </h:form>
@@ -101,17 +101,18 @@
                                                     <h1>Bienvenido <span>de nuevo!</span></h1>
                                                 </div>
                                                 <div class="login-form">
-                                                    <form>
+                                                    <h:form id="formularioLogin">
+                                                        <p:growl id="growl" showDetail="true" sticky="true" /> 
                                                         <div class="form-details">
                                                             <label class="user">
-                                                                <input type="text" name="username" placeholder="usuario" id="username"/>
+                                                                <p:inputText  title="Pseudo" value="#{usuario.username}" id="username" placeholder="usuario" validatorMessage="Usuario no valido" required="true" requiredMessage="Usuario requerido"></p:inputText>
                                                             </label>
                                                             <label class="pass">
-                                                                <input type="password" name="passsword" placeholder="Contraseña" id="password"/>
+                                                                <p:password value="#{usuario.pasword}" id="pasword" placeholder="contraseña" required="true"  requiredMessage="La contraseña es requerida" ></p:password>
                                                             </label>
                                                         </div>
-                                                        <button type="submit" class="btn btn-primary" onsubmit="">Enviar</button>
-                                                    </form>
+                                                        <p:commandButton value="Enviar" actionListener="#{usuario.loggin()}" class="btn btn-primary" update="growl" ></p:commandButton>
+                                                    </h:form>
                                                 </div>
                                             </div>
                                         </div>
