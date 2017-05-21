@@ -79,13 +79,16 @@
                                                                 <p:password value="#{usuario.pasword}" id="pwd2" placeholder="contraseña" required="true"  requiredMessage="Repite su contraseña"></p:password>
                                                             </label>
                                                             <label class="nombre">
-                                                                <input type="text" name="nombre" placeholder="nombre" id="nombre"/>
+                                                                <p:inputText   value="#{usuario.prestatarios.nombre}" id="nombre" placeholder="nombre"  required="true" requiredMessage="nombre requerido"></p:inputText>
+
+
                                                             </label>
                                                             <label class="apellido">
-                                                                <input type="text" name="apellido" placeholder="apellidos" id="apellido"/>
+                                                                <p:inputText   value="#{usuario.prestatarios.apellido}" id="apellido" placeholder="apellido"  required="true" requiredMessage="apellido requerido"></p:inputText>
+
                                                             </label>
                                                             <label class="telefono">
-                                                                <input type="text" name="telefono" placeholder="telefono" id="telefono"/>
+                                                                <p:inputText   value="#{usuario.prestatarios.telefono}" id="telefono" placeholder="telefono" ></p:inputText>
                                                             </label>
                                                         </div>
 

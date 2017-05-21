@@ -13,16 +13,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -41,9 +48,26 @@ public class Usuario implements Serializable {
     private String username;
     private String pasword;
     private String tipo;
-    private int idPrestatario;
+    // private int idPrestatario;
+
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "idPrestatarios")
+    private Prestatarios prestatarios = new Prestatarios();
 //    @Transient
 //    private String password2;
+
+    @PostConstruct
+    public void init() {
+
+    }
+
+    public Prestatarios getPrestatarios() {
+        return prestatarios;
+    }
+
+    public void setPrestatarios(Prestatarios prestatarios) {
+        this.prestatarios = prestatarios;
+    }
 
     public int getIdUsuarios() {
         return idUsuarios;
@@ -77,14 +101,13 @@ public class Usuario implements Serializable {
         this.tipo = tipo;
     }
 
-    public int getIdPrestatario() {
-        return idPrestatario;
-    }
-
-    public void setIdPrestatario(int idPrestatario) {
-        this.idPrestatario = idPrestatario;
-    }
-
+//    public int getIdPrestatario() {
+//        return idPrestatario;
+//    }
+//
+//    public void setIdPrestatario(int idPrestatario) {
+//        this.idPrestatario = idPrestatario;
+//    }
     public String add() {
 
         DAOFactory daof = DAOFactory.getDAOFactory();
@@ -94,12 +117,15 @@ public class Usuario implements Serializable {
         usuario.setPasword(this.pasword);
         usuario.setUsername(this.username);
         usuario.setIdUsuarios(this.idUsuarios);
+        Prestatarios aquiprestatario = new Prestatarios();
+        aquiprestatario = this.prestatarios;
+        usuario.setPrestatarios(aquiprestatario);
         FacesContext context = FacesContext.getCurrentInstance();
         try {
             gdao.add(usuario);
 
             try {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("page1.xhtml");
+                FacesContext.getCurrentInstance().getExternalContext().redirect("vista/administrador/panel.jsp");
             } catch (IOException ex) {
                 Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -116,6 +142,7 @@ public class Usuario implements Serializable {
 //        IPersonaDAO adao = daof.getPersonaDAO();
         IGenericoDAO gdao = daof.getGenericoDAO();
         ArrayList<Usuario> lista = new ArrayList();
+        FacesContext context = FacesContext.getCurrentInstance();
 
         Usuario usuario = new Usuario();
         lista = (ArrayList<Usuario>) gdao.get("Usuario where username='" + this.username + "'");
@@ -123,7 +150,10 @@ public class Usuario implements Serializable {
             usuario = lista.get(0);
             if (this.pasword == null ? usuario.getPasword() == null : this.pasword.equals(usuario.getPasword())) {
                 try {
-                    FacesContext.getCurrentInstance().getExternalContext().redirect("page1.xhtml");
+                    HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+                    HttpSession session = request.getSession();
+                    context.getExternalContext().getSessionMap().put("usuario", usuario);
+                    FacesContext.getCurrentInstance().getExternalContext().redirect("vista/administrador/panel.jsp");
                 } catch (IOException ex) {
                     Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -134,6 +164,11 @@ public class Usuario implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Fallo", "Usuario no existe"));
         }
 
+    }
+
+    public String logout() {
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        return "index?faces-redirect=true";
     }
 
 }
