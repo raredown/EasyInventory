@@ -9,6 +9,7 @@ public abstract class DAOFactory {
 
 //    public abstract IPersonaDAO getPersonaDAO();
     public abstract IGenericoDAO getGenericoDAO();
+   // public abstract IUsuarioDao getUsuarioDao();
 
     public static DAOFactory getDAOFactory() {
         DAOFactory daof = null;
