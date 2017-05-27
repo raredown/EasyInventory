@@ -3,92 +3,28 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-var app = angular.module("myApp", ["ngRoute"]);
-app.config(function ($routeProvider) {
-    $routeProvider
-            .when("/", {
-                templateUrl: "main.html"
-            })
-            .when("/red", {
-                templateUrl: "vista/tablaEquipos.jsp"
-            })
-            .when("/equipo", {
-                templateUrl: "vista/equipo.jsp",
-                controller: "equipoCtrl"
-            })
-            .when("/categoria", {
-                templateUrl: "vista/categoria.jsp",
-                controller: "categoriaCtrl"
-            })
-            .when("/marca", {
-                templateUrl: "vista/marca.jsp",
-                controller: "marcaCtrl"
-            });
-});
-app.controller("equipoCtrl", function ($scope) {
-    $scope.marcas = [
-        {idMarca: 300, nombre: 'hp'},
-        {idMarca: 301, nombre: 'moster'},
-        {idMarca: 302, nombre: 'asus'}
-    ];
+
+app.controller("categoriaCtrl", function ($scope) {
     $scope.categorias = [
         {idCategoria: 300, nombre: 'ordenador'},
         {idCategoria: 301, nombre: 'movil'},
         {idCategoria: 302, nombre: 'portatil'}
     ];
-    $scope.equipos = [
-        {idEquipo: 0,
-            demoninacion: '',
-            descripcion: '',
-            numeroSerie: '',
-            marca: {idMarca: 0, nombre: ''},
-            categoria: {idCategoria: 0, nombre: ''}
-        },
-        {idEquipo: 0,
-            demoninacion: '',
-            descripcion: '',
-            numeroSerie: '',
-            marca: {idMarca: 0, nombre: ''},
-            categoria: {idCategoria: 0, nombre: ''}
-        },
-        {idEquipo: 0,
-            demoninacion: '',
-            descripcion: '',
-            numeroSerie: '',
-            marca: {idMarca: 0, nombre: ''},
-            categoria: {idCategoria: 0, nombre: ''}
-        }
-    ];
-    $scope.newEquipo =
-            {idEquipo: 0,
-                demoninacion: '',
-                descripcion: '',
-                numeroSerie: '',
-                marca: {idMarca: 0, nombre: ''},
-                categoria: {idCategoria: 0, nombre: ''}
-            };
-
-    $scope.addEquipo = function () {
-
-        if (typeof $scope.newEquipo.marca === 'string') {
-            $scope.newEquipo.marca = JSON.parse($scope.newEquipo.marca);
-        }
-        if (typeof $scope.newEquipo.categoria === 'string') {
-            $scope.newEquipo.categoria = JSON.parse($scope.newEquipo.categoria);
-        }
-        //alert(myobj); // 'world'
+    $scope.newCategoria = {idCategoria: 0, nombre: ''};
+    $scope.addCategoria = function () {
+       // $scope.categorias.push($scope.newCategoria);
         var parametros = {
-            "equipo": angular.toJson($scope.newEquipo)
+            "newcategoria": angular.toJson($scope.newCategoria)
         };
         $.ajax({
             data: parametros,
-            url: '../../ControlEquipo',
+            url: '../../ControlCategoria',
             type: 'post',
             beforeSend: function () {
 
             },
             success: function (response) {
-                Command: toastr["success"]("Se han añadido correctamente!");
+                Command: toastr["success"]("Se ha añadido correctamente!");
 
                 toastr.options = {
                     "closeButton": false,
@@ -107,6 +43,133 @@ app.controller("equipoCtrl", function ($scope) {
                     "showMethod": "fadeIn",
                     "hideMethod": "fadeOut"
                 };
+            }, error: function (jqXHR, textStatus, errorThrown) {
+                Command: toastr["error"]("No se ha podido añadir!");
+
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": true,
+                    "positionClass": "toast-top-center",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
+            }
+        });
+        $scope.newCategoria = {idCategoria: 0, nombre: ''};
+
+    };
+    $scope.getCategoria = function () {
+        $.ajax({
+            data: {"getCategoria": "toda"},
+            async: false,
+            url: '../../ControlCategoria',
+            type: 'post',
+            dataType: "json",
+            beforeSend: function () {
+
+            },
+            success: function (response) {
+                // alert("Inicialidad:"+$scope.marcas);
+                $scope.categorias = response;
+                // alert(response);
+                Command: toastr["success"]("Se han cargado las categoria correctamente!");
+
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": true,
+                    "positionClass": "toast-top-center",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
+            }, error: function (jqXHR, textStatus, errorThrown) {
+                Command: toastr["error"]("No se ha podido cargar las categorias!");
+
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": true,
+                    "positionClass": "toast-top-center",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
+            }
+        });
+
+    };
+
+    //updateMarca
+    $scope.elecionCategoria = function (id) {
+
+        for (i = 0; i < $scope.categorias.length; i++) {
+            if ($scope.categorias[i].idCategoria == id) {
+                $scope.modCategoria = $scope.categorias[i];
+            }
+
+        }
+
+    };
+    $scope.updateCategoria = function () {
+
+        var parametros = {
+            "newcategoria": angular.toJson($scope.modCategoria)
+        };
+        $.ajax({
+            data: parametros,
+            url: '../../ControlCategoria',
+            type: 'post',
+            beforeSend: function () {
+
+            },
+            success: function (response) {
+                Command: toastr["success"]("Se ha actualizado correctamente!");
+
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": true,
+                    "positionClass": "toast-top-center",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
+                $scope.modCategoria = {idCategoria: 0, nombre: ''};
             }, error: function (jqXHR, textStatus, errorThrown) {
                 Command: toastr["error"]("No se ha podido borrar!");
 
@@ -129,32 +192,25 @@ app.controller("equipoCtrl", function ($scope) {
                 };
             }
         });
-        $scope.newEquipo =
-                {idEquipo: 0,
-                    demoninacion: '',
-                    descripcion: '',
-                    numeroSerie: '',
-                    marca: {idMarca: 0, nombre: ''},
-                    categoria: {idCategoria: 0, nombre: ''}
-                };
+
 
     };
-    $scope.getCategoria = function () {
+
+    $scope.deleteCategoria = function () {
+
+        var parametros = {
+            "borrarCategoria": angular.toJson($scope.modCategoria)
+        };
         $.ajax({
-            data: {"getCategoria": "toda"},
-            async: false,
+            data: parametros,
             url: '../../ControlCategoria',
             type: 'post',
-            dataType: "json",
             beforeSend: function () {
 
             },
             success: function (response) {
-                // alert("Inicialidad:"+$scope.marcas);
-                $scope.categorias = response;
-                // alert(response);
-//                alert("bien");
-                Command: toastr["success"]("Se han cargado las categoria correctamente!");
+                window.location.href = '';
+                Command: toastr["success"]("Se ha borrado correctamente!");
 
                 toastr.options = {
                     "closeButton": false,
@@ -173,56 +229,16 @@ app.controller("equipoCtrl", function ($scope) {
                     "showMethod": "fadeIn",
                     "hideMethod": "fadeOut"
                 };
+                $scope.modCategoria = {idCategoria: 0, nombre: ''};
             }, error: function (jqXHR, textStatus, errorThrown) {
-//                alert("mal");
-            }
-        });
-
-    };
-    $scope.getMarcas = function () {
-        $.ajax({
-            data: {"getMarcas": "toda"},
-            async: false,
-            url: '../../ControlMarca',
-            type: 'post',
-            dataType: "json",
-            beforeSend: function () {
-
-            },
-            success: function (response) {
-                // alert("Inicialidad:"+$scope.marcas);
-
-                $scope.marcas = response;
-                Command: toastr["success"]("Se han cargado las marcas correctamente!");
+                Command: toastr["error"]("No se ha podido borrar por que ahi un equipo que tiene esta categoria!");
 
                 toastr.options = {
                     "closeButton": false,
                     "debug": false,
                     "newestOnTop": false,
                     "progressBar": true,
-                    "positionClass": "toast-top-center",
-                    "preventDuplicates": false,
-                    "onclick": null,
-                    "showDuration": "300",
-                    "hideDuration": "1000",
-                    "timeOut": "5000",
-                    "extendedTimeOut": "1000",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                };
-                // alert(response);
-//                alert("bien");
-            }, error: function (jqXHR, textStatus, errorThrown) {
-                Command: toastr["error"]("Problema ha cargar marca!");
-
-                toastr.options = {
-                    "closeButton": false,
-                    "debug": false,
-                    "newestOnTop": false,
-                    "progressBar": true,
-                    "positionClass": "toast-top-center",
+                    "positionClass": "toast-top-right",
                     "preventDuplicates": false,
                     "onclick": null,
                     "showDuration": "300",
@@ -237,75 +253,11 @@ app.controller("equipoCtrl", function ($scope) {
             }
         });
 
-    };
-    $scope.getEquipos = function () {
-        $.ajax({
-            data: {"getEquipos": "toda"},
-            async: false,
-            url: '../../ControlEquipo',
-            type: 'post',
-            dataType: "json",
-            beforeSend: function () {
-
-            },
-            success: function (response) {
-                // alert("Inicialidad:"+$scope.marcas);
-
-                $scope.equipos = response;
-                Command: toastr["success"]("Se han cargado las equipo correctamente!");
-
-                toastr.options = {
-                    "closeButton": false,
-                    "debug": false,
-                    "newestOnTop": false,
-                    "progressBar": true,
-                    "positionClass": "toast-top-center",
-                    "preventDuplicates": false,
-                    "onclick": null,
-                    "showDuration": "300",
-                    "hideDuration": "1000",
-                    "timeOut": "5000",
-                    "extendedTimeOut": "1000",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                };
-            }, error: function (jqXHR, textStatus, errorThrown) {
-                Command: toastr["error"]("No se ha podido cargar los equipos!");
-
-                toastr.options = {
-                    "closeButton": false,
-                    "debug": false,
-                    "newestOnTop": false,
-                    "progressBar": true,
-                    "positionClass": "toast-top-center",
-                    "preventDuplicates": false,
-                    "onclick": null,
-                    "showDuration": "300",
-                    "hideDuration": "1000",
-                    "timeOut": "5000",
-                    "extendedTimeOut": "1000",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                };
-            }
-        });
 
     };
-
-
-    $scope.inicializar = function () {
-        $scope.getMarcas();
-        $scope.getCategoria();
-        $scope.getEquipos();
-    };
-    $scope.inicializar();
+    $scope.getCategoria();
     $(document).ready(function () {
         // $scope.getMarcas();
-
         $('#example').DataTable({
             "language": {
                 "sProcessing": "Procesando...",

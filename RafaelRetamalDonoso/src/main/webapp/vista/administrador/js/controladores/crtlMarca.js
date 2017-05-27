@@ -13,9 +13,9 @@ app.controller("marcaCtrl", function ($scope) {
     ];
     $scope.modMarca = {idMarca: 0, nombre: ''};
     $scope.newMarca = {idMarca: 0, nombre: ''};
-    
+
     $scope.addMarca = function () {
-        $scope.marcas.push($scope.newMarca);
+        //$scope.marcas.push($scope.newMarca);
         var parametros = {
             "marquita": angular.toJson($scope.newMarca)
         };
@@ -27,9 +27,45 @@ app.controller("marcaCtrl", function ($scope) {
 
             },
             success: function (response) {
-                alert("bien");
+                Command: toastr["success"]("Se han añadido correctamente!");
+
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": true,
+                    "positionClass": "toast-top-center",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
             }, error: function (jqXHR, textStatus, errorThrown) {
-                alert("mal");
+                Command: toastr["error"]("No se ha podido añadir!");
+
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": true,
+                    "positionClass": "toast-top-center",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
             }
         });
         $scope.newMarca = {idMarca: 0, nombre: ''};
@@ -49,9 +85,45 @@ app.controller("marcaCtrl", function ($scope) {
                 // alert("Inicialidad:"+$scope.marcas);
                 $scope.marcas = response;
                 // alert(response);
-                alert("bien");
+                Command: toastr["success"]("Se han cargado las marcas correctamente!");
+
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": true,
+                    "positionClass": "toast-top-center",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
             }, error: function (jqXHR, textStatus, errorThrown) {
-                alert("mal");
+                Command: toastr["error"]("No se ha podido cargar!");
+
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": true,
+                    "positionClass": "toast-top-center",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
             }
         });
 
@@ -81,16 +153,52 @@ app.controller("marcaCtrl", function ($scope) {
 
             },
             success: function (response) {
-                alert("bien");
+                Command: toastr["success"]("Se ha actualizado correctamente!");
+
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": true,
+                    "positionClass": "toast-top-center",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
                 $scope.modMarca = {idMarca: 0, nombre: ''};
             }, error: function (jqXHR, textStatus, errorThrown) {
-                alert("mal");
+                Command: toastr["error"]("No se ha podido borrar por que ahi un equipo que tiene esta marca!");
+
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": true,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
             }
         });
 
 
     };
-    
+
     $scope.deleteMarca = function () {
 
         var parametros = {
@@ -105,10 +213,46 @@ app.controller("marcaCtrl", function ($scope) {
             },
             success: function (response) {
                 window.location.href = '';
-                alert("bien");
+                Command: toastr["success"]("Se ha borrado correctamente!");
+
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": true,
+                    "positionClass": "toast-top-center",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
                 $scope.modMarca = {idMarca: 0, nombre: ''};
             }, error: function (jqXHR, textStatus, errorThrown) {
-                alert("mal");
+                Command: toastr["error"]("No se ha podido borrar!");
+
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": true,
+                    "positionClass": "toast-top-center",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
             }
         });
 

@@ -14,6 +14,7 @@
         <script src="js/rootingAdmin.js"></script>
         <script src="js/datatable.js"></script>
         <script src="js//controladores/crtlMarca.js"></script>
+        <script src="js//controladores/crtlCategoria.js"></script>
         <link href="css/datatable.css" rel="stylesheet">
         <title>JSP Page</title>
     </head>
