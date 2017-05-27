@@ -56,6 +56,8 @@ public class ControlEquipo extends HttpServlet {
         }else if (request.getParameter("borrarEquipo") != null) {
             String json = request.getParameter("borrarEquipo");
             Equipo equipo = gson.fromJson(json, Equipo.class);
+            equipo.setMarca(null);
+            equipo.setCategoria(null);
             gdao.delete(equipo);
         }
 
