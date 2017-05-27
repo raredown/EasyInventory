@@ -30,11 +30,11 @@ public class Equipo implements Serializable {
     private String descripcion;
     private String numeroSerie;
 
-    @OneToOne(cascade = {CascadeType.ALL})
+    @OneToOne(cascade = {CascadeType.PERSIST})
     @JoinColumn(name = "idMarca")
     private Marca marca = new Marca();
 
-    @OneToOne(cascade = {CascadeType.ALL})
+    @OneToOne(cascade = {CascadeType.PERSIST})
     @JoinColumn(name = "idCategoria")
     private Categoria categoria = new Categoria();
 

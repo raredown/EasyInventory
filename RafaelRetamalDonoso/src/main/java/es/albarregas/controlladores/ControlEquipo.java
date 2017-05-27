@@ -53,6 +53,10 @@ public class ControlEquipo extends HttpServlet {
             //response.setCharacterEncoding("UTF-8");
             response.getWriter().write(representacionJSON);
             
+        }else if (request.getParameter("borrarEquipo") != null) {
+            String json = request.getParameter("borrarEquipo");
+            Equipo equipo = gson.fromJson(json, Equipo.class);
+            gdao.delete(equipo);
         }
 
     }
