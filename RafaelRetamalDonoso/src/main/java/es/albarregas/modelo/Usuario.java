@@ -117,12 +117,14 @@ public class Usuario implements Serializable {
         usuario.setPasword(this.pasword);
         usuario.setUsername(this.username);
         usuario.setIdUsuarios(this.idUsuarios);
+        usuario.setTipo("prestatarios");
         Prestatarios aquiprestatario = new Prestatarios();
         aquiprestatario = this.prestatarios;
         usuario.setPrestatarios(aquiprestatario);
         FacesContext context = FacesContext.getCurrentInstance();
         try {
             gdao.add(usuario);
+            loggin();
 
             try {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("vista/administrador/panel.jsp");

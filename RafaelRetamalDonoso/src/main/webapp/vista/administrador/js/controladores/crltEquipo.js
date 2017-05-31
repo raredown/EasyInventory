@@ -7,6 +7,7 @@ app.controller("equipoCtrl", function ($scope) {
     $scope.marcas = [];
     $scope.categorias = [];
     $scope.equipos = [];
+    $scope.prestatarios = [];
     $scope.newEquipo =
             {idEquipo: 0,
                 demoninacion: '',
@@ -117,6 +118,46 @@ app.controller("equipoCtrl", function ($scope) {
                 // alert(response);
 //                alert("bien");
                 Command: toastr["success"]("Se han cargado las categoria correctamente!");
+
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": true,
+                    "positionClass": "toast-top-center",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
+            }, error: function (jqXHR, textStatus, errorThrown) {
+//                alert("mal");
+            }
+        });
+
+    };
+    $scope.getPrestatarios = function () {
+        $.ajax({
+            data: {"getPrestatarios": "toda"},
+            async: false,
+            url: '../../ControlPrestatarios',
+            type: 'post',
+            dataType: "json",
+            beforeSend: function () {
+
+            },
+            success: function (response) {
+                // alert("Inicialidad:"+$scope.marcas);
+                $scope.prestatarios = response;
+                // alert(response);
+//                alert("bien");
+                Command: toastr["success"]("Se han cargado los prestatarios correctamente!");
 
                 toastr.options = {
                     "closeButton": false,
@@ -409,6 +450,7 @@ app.controller("equipoCtrl", function ($scope) {
         $scope.getMarcas();
         $scope.getCategoria();
         $scope.getEquipos();
+        $scope.getPrestatarios();
     };
     $scope.inicializar();
     $(document).ready(function () {

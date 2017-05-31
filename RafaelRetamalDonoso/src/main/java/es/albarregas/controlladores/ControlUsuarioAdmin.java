@@ -16,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -43,6 +44,17 @@ public class ControlUsuarioAdmin extends HttpServlet {
             Usuario usuario = gson.fromJson(json, Usuario.class);
             gdao.add(usuario);
 
+        }else if(request.getParameter("getMiUsuario") != null){
+            HttpSession session = request.getSession();
+            Usuario usuario = (Usuario) session.getAttribute("usuario");
+            String representacionJSON = gson.toJson(usuario);
+            response.getWriter().write(representacionJSON);
+        } else if(request.getParameter("modUsuario") != null){
+            HttpSession session = request.getSession();
+            String json = request.getParameter("modUsuario");
+            Usuario usuario = gson.fromJson(json, Usuario.class);
+            gdao.add(usuario);
+            session.setAttribute("usuario", usuario);
         }
 
     }

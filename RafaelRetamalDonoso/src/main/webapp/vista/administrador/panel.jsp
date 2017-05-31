@@ -16,6 +16,7 @@
         <script src="js//controladores/crtlMarca.js"></script>
         <script src="js//controladores/crtlCategoria.js"></script>
         <script src="js/controladores/crltEquipo.js"></script>
+        <script src="js/controladores/crtlUsuarioAdmin.js"></script>
         <link href="css/datatable.css" rel="stylesheet">
         <title>JSP Page</title>
     </head>

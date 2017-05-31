@@ -37,6 +37,18 @@ public class Equipo implements Serializable {
     @OneToOne(cascade = {CascadeType.PERSIST})
     @JoinColumn(name = "idCategoria")
     private Categoria categoria = new Categoria();
+    
+    @OneToOne(cascade = {CascadeType.PERSIST})
+    @JoinColumn(name = "idPrestatario")
+    private Prestatarios prestatario = new Prestatarios();
+
+    public Prestatarios getPrestatario() {
+        return prestatario;
+    }
+
+    public void setPrestatario(Prestatarios prestatario) {
+        this.prestatario = prestatario;
+    }
 
     public Marca getMarca() {
         return marca;

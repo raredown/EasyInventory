@@ -11,11 +11,11 @@
         <div class="panel panel-primary">
             <div class="panel-heading"> Admin Usuarios<a data-toggle="modal" data-target="#anadir"><span class="glyphicon glyphicon-plus pull-right"></span></a></div>
 
-           <div class="panel-body">
+            <div class="panel-body">
                 <div class="row">
                     <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="http://www.coordinadora.com/wp-content/uploads/sidebar_usuario-corporativo.png" class="img-circle img-responsive"> </div>
 
-       
+
                     <div class=" col-md-9 col-lg-9 "> 
                         <table class="table table-user-information">
                             <tbody>
@@ -41,9 +41,9 @@
                                     <td>Apellidos</td>
                                     <td>{{miUsuario.prestatarios.apellido}}</td>
                                 </tr>
-                      
 
-                            </tr>
+
+                                </tr>
 
                             </tbody>
                         </table>
@@ -51,14 +51,14 @@
                     </div>
                 </div>
             </div>
-             <div class="panel-footer">
+            <div class="panel-footer">
                 <a data-original-title="Broadcast Message" data-toggle="modal" data-target="#anadir" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-plus"></i></a>
                 <span class="pull-right">
                     <a data-original-title="Edit this user" data-toggle="modal" data-target="#modificar" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
                 </span>
             </div>
         </div>
-     
+
     </div>
 
     <!-- Modal  Añadir-->
@@ -101,12 +101,13 @@
                     <button type="button" class="btn btn-info" data-dismiss="modal" >Cancelar</button>
                 </div>
             </div>
-            
-            
+
+
 
         </div>
     </div>
-        <div class="modal fade" id="modificar" role="dialog">
+    <!-- Modal  Modificar-->
+    <div class="modal fade" id="modificar" role="dialog">
         <div class="modal-dialog">
 
             <!-- Modal content-->
@@ -118,10 +119,6 @@
                 <div class="modal-body">
                     <form>
                         <div class="form-group">
-                            <label for="username">Username:</label>
-                            <input type="text" class="form-control" id="username" placeholder="username" ng-model="miUsuario.username">
-                        </div>
-                          <div class="form-group">
                             <label for="username">Pasword:</label>
                             <input type="password" class="form-control" id="password" placeholder="password" ng-model="newPass">
                         </div>
@@ -145,12 +142,12 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-warning" data-dismiss="modal" ng-click="">Modficar</button>
+                    <button type="button" class="btn btn-warning" data-dismiss="modal" ng-click="modUsuario()">Modficar</button>
                     <button type="button" class="btn btn-info" data-dismiss="modal" >Cancelar</button>
                 </div>
             </div>
-            
-            
+
+
 
         </div>
     </div>
