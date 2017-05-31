@@ -24,6 +24,8 @@
                             <th>numeroSerie:</th>
                             <th>Nombre Marca</th>
                             <th>Nombre categoria</th>
+                            <th>Nombre Prestatario</th>
+                            <th>Nombre Apellido</th>
                             <th>Opciones</th>
                         </tr>
                     </thead>
@@ -35,6 +37,8 @@
                             <th>numeroSerie:</th>
                             <th>Nombre Marca</th>
                             <th>Nombre categoria</th>
+                            <th>Nombre Prestatario</th>
+                            <th>Nombre Apellido</th>
                             <th>Opciones</th>
                         </tr>
                     </tfoot>
@@ -47,6 +51,8 @@
                             <td>{{x.numeroSerie}}</td>
                             <td>{{x.marca.nombre}}</td>
                             <td>{{x.categoria.nombre}}</td>
+                            <td>{{x.prestatario.nombre}}</td>
+                            <td>{{x.prestatario.apellido}}</td>
                             <td><a data-toggle="modal" data-target="#modificar" ng-click="elecionEquipo(x.idEquipo)"><span class="glyphicon glyphicon-pencil pull-center glyfmod"></span></a><a data-toggle="modal" data-target="#borrar" ng-click="elecionEquipo(x.idEquipo)"><span class="glyphicon glyphicon-remove glyfrem"></span></a></td>
                         </tr>
                     </tbody>
@@ -88,10 +94,10 @@
                                 <option ng-repeat="option in marcas" value="{{option}}">{{option.nombre}}</option>
                             </select>
                         </div>
-<!--                        <div class="form-group" ng-hide="newEquipo.marca.idMarca != 0">
-                            <label for="marca">Nueva Marca:</label>
-                            <input type="text" class="form-control" id="marca" placeholder="marca" ng-model="newEquipo.marca.nombre">
-                        </div>-->
+                        <!--                        <div class="form-group" ng-hide="newEquipo.marca.idMarca != 0">
+                                                    <label for="marca">Nueva Marca:</label>
+                                                    <input type="text" class="form-control" id="marca" placeholder="marca" ng-model="newEquipo.marca.nombre">
+                                                </div>-->
                         <div class="form-group">
                             <label for="sel1">Categoria:</label>
                             <select class="form-control" id="sel1" ng-model="newEquipo.categoria">
@@ -99,10 +105,17 @@
                                 <option ng-repeat="option2 in categorias" value="{{option2}}">{{option2.nombre}}</option>
                             </select>
                         </div>
-<!--                        <div class="form-group" ng-hide="newEquipo.categoria.idCategoria != 0">
-                            <label for="marca">Nueva Categoria</label>
-                            <input type="text" class="form-control" id="marca" placeholder="Categoria" ng-model="newEquipo.categoria.nombre">
-                        </div>-->
+                        <!--                        <div class="form-group" ng-hide="newEquipo.categoria.idCategoria != 0">
+                                                    <label for="marca">Nueva Categoria</label>
+                                                    <input type="text" class="form-control" id="marca" placeholder="Categoria" ng-model="newEquipo.categoria.nombre">
+                                                </div>-->
+                        <div class="form-group">
+                            <label for="sel1">Prestatario:</label>
+                            <select class="form-control" id="sel1" ng-model="newEquipo.prestatario">
+                                <!--<option value="0" selected="true">Nueva Marca</option>-->
+                                <option ng-repeat="option3 in prestatarios" value="{{option3}}">{{option3.nombre}}</option>
+                            </select>
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -144,10 +157,10 @@
                                 <option ng-repeat="option in marcas" value="{{option}}">{{option.nombre}}</option>
                             </select>
                         </div>
-<!--                        <div class="form-group" ng-hide="modEquipo.marca.idMarca != 0">
-                            <label for="marca">Nueva Marca:</label>
-                            <input type="text" class="form-control" id="marca" placeholder="marca" ng-model="modEquipo.marca.nombre">
-                        </div>-->
+                        <!--                        <div class="form-group" ng-hide="modEquipo.marca.idMarca != 0">
+                                                    <label for="marca">Nueva Marca:</label>
+                                                    <input type="text" class="form-control" id="marca" placeholder="marca" ng-model="modEquipo.marca.nombre">
+                                                </div>-->
                         <div class="form-group">
                             <label for="sel1">Categoria:</label>
                             <select class="form-control" id="sel1" ng-model="modEquipo.categoria">
@@ -155,10 +168,17 @@
                                 <option ng-repeat="option2 in categorias" value="{{option2}}">{{option2.nombre}}</option>
                             </select>
                         </div>
-<!--                        <div class="form-group" ng-hide="modEquipo.categoria.idCategoria != 0">
-                            <label for="marca">Nueva Categoria</label>
-                            <input type="text" class="form-control" id="marca" placeholder="Categoria" ng-model="modEquipo.categoria.nombre">
-                        </div>-->
+                          <div class="form-group">
+                            <label for="sel1">Prestatario:</label>
+                            <select class="form-control" id="sel1" ng-model="modEquipo.prestatario">
+                                <!--<option value="0" selected="true">Nueva Marca</option>-->
+                                <option ng-repeat="option3 in prestatarios" value="{{option3}}">{{option3.nombre}}</option>
+                            </select>
+                        </div>
+                        <!--                        <div class="form-group" ng-hide="modEquipo.categoria.idCategoria != 0">
+                                                    <label for="marca">Nueva Categoria</label>
+                                                    <input type="text" class="form-control" id="marca" placeholder="Categoria" ng-model="modEquipo.categoria.nombre">
+                                                </div>-->
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -171,7 +191,7 @@
     </div>
 
     <!--Dialog Borrar-->
-        <div class="modal fade" id="borrar" role="dialog">
+    <div class="modal fade" id="borrar" role="dialog">
         <div class="modal-dialog">
 
             <!-- Modal content-->

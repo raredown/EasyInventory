@@ -14,14 +14,16 @@ app.controller("equipoCtrl", function ($scope) {
                 descripcion: '',
                 numeroSerie: '',
                 marca: {idMarca: 0, nombre: ''},
-                categoria: {idCategoria: 0, nombre: ''}
+                categoria: {idCategoria: 0, nombre: ''},
+                prestatario: {idPrestatarios: 0}
             };
     $scope.modEquipo = {idEquipo: 0,
         demoninacion: '',
         descripcion: '',
         numeroSerie: '',
         marca: {idMarca: 0, nombre: ''},
-        categoria: {idCategoria: 0, nombre: ''}
+        categoria: {idCategoria: 0, nombre: ''},
+        prestatario: {idPrestatarios: 0}
     };
 
     $scope.addEquipo = function () {
@@ -32,11 +34,17 @@ app.controller("equipoCtrl", function ($scope) {
         if (typeof $scope.newEquipo.categoria === 'string') {
             $scope.newEquipo.categoria = JSON.parse($scope.newEquipo.categoria);
         }
+        if (typeof $scope.newEquipo.prestatario === 'string') {
+            $scope.newEquipo.prestatario = JSON.parse($scope.newEquipo.prestatario);
+        }
         if ($scope.newEquipo.marca.idMarca === 0) {
             $scope.newEquipo.marca = null;
         }
         if ($scope.newEquipo.categoria.idCategoria === 0) {
             $scope.newEquipo.categoria = null;
+        }
+        if ($scope.newEquipo.prestatario.idPrestatarios === 0) {
+            $scope.newEquipo.prestatario = null;
         }
         //alert(myobj); // 'world'
 
@@ -98,7 +106,8 @@ app.controller("equipoCtrl", function ($scope) {
                     descripcion: '',
                     numeroSerie: '',
                     marca: {idMarca: 0, nombre: ''},
-                    categoria: {idCategoria: 0, nombre: ''}
+                    categoria: {idCategoria: 0, nombre: ''},
+                    prestatario: {idPrestatarios: 0}
                 };
 
     };
@@ -316,11 +325,17 @@ app.controller("equipoCtrl", function ($scope) {
         if (typeof $scope.modEquipo.categoria === 'string') {
             $scope.modEquipo.categoria = JSON.parse($scope.modEquipo.categoria);
         }
+        if (typeof $scope.modEquipo.prestatario === 'string') {
+            $scope.modEquipo.prestatario = JSON.parse($scope.modEquipo.prestatario);
+        }
         if ($scope.modEquipo.marca.idMarca === 0) {
             $scope.modEquipo.marca = null;
         }
         if ($scope.modEquipo.categoria.idCategoria === 0) {
             $scope.modEquipo.categoria = null;
+        }
+        if ($scope.modEquipo.prestatario.idPrestatarios === 0) {
+            $scope.modEquipo.prestatario = null;
         }
         var parametros = {
             "equipo": angular.toJson($scope.modEquipo)
@@ -352,14 +367,14 @@ app.controller("equipoCtrl", function ($scope) {
                     "showMethod": "fadeIn",
                     "hideMethod": "fadeOut"
                 };
-                $scope.modEquipo =
-                        {idEquipo: 0,
-                            demoninacion: '',
-                            descripcion: '',
-                            numeroSerie: '',
-                            marca: {idMarca: 0, nombre: ''},
-                            categoria: {idCategoria: 0, nombre: ''}
-                        };
+                $scope.modEquipo = {idEquipo: 0,
+                    demoninacion: '',
+                    descripcion: '',
+                    numeroSerie: '',
+                    marca: {idMarca: 0, nombre: ''},
+                    categoria: {idCategoria: 0, nombre: ''},
+                    prestatario: {idPrestatarios: 0}
+                };
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 Command: toastr["error"]("No se ha podido actualizar!");
