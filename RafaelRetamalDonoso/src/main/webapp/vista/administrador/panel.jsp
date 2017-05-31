@@ -31,7 +31,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="#/">Cambio en la cuenta <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
                         <li class="divider"></li>
-                        <li><a href="#red">Control de usuario <span class="glyphicon glyphicon-stats pull-right"></span></a></li>
+                        <li><a href="#usuario">Control de usuario <span class="glyphicon glyphicon-stats pull-right"></span></a></li>
                         <li class="divider"></li>
                         <li><a href="#green">Incidencia <span class="badge pull-right"> 42 </span></a></li>
                         <li class="divider"></li>
