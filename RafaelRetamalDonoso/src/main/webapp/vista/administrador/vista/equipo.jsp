@@ -11,7 +11,7 @@
     </div>
     <!--Panel tabla-->
     <div class="col-md-6 col-md-offset-3">
-        <div class="panel panel-primary">
+        <div class="panel panel-primary" id="pruebasPdf">
             <div class="panel-heading">Panel equipo <a data-toggle="modal" data-target="#anadir"><span class="glyphicon glyphicon-plus pull-right"></span></a></div>
             <div class="panel-body">
                 <table id="example" class="display" cellspacing="0" width="100%">
@@ -60,7 +60,11 @@
                 </table>
 
             </div>
-            <div class="panel-footer">Panel Footer</div>
+            <div class="panel-footer">
+                <a data-original-title="Broadcast Message" type="button" class="btn btn-sm btn-primary" ng-click="generarPdf()"><i class="glyphicon glyphicon-plus"></i></a>
+
+                <a data-original-title="Broadcast Message" type="button" class="btn btn-sm btn-primary" ng-click="demoFromHTML()"><i class="glyphicon glyphicon-plus"></i></a>
+            </div>
         </div>
     </div>
     <!--Dialog añadir-->
@@ -168,7 +172,7 @@
                                 <option ng-repeat="option2 in categorias" value="{{option2}}">{{option2.nombre}}</option>
                             </select>
                         </div>
-                          <div class="form-group">
+                        <div class="form-group">
                             <label for="sel1">Prestatario:</label>
                             <select class="form-control" id="sel1" ng-model="modEquipo.prestatario">
                                 <!--<option value="0" selected="true">Nueva Marca</option>-->

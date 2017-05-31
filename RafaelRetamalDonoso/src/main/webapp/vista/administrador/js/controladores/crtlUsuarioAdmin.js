@@ -86,17 +86,18 @@ app.controller("usuarioCtrl", function ($scope) {
             }
         });
         $scope.newUsuario = {
-            idUsuarios: 0,
-            username: '',
-            tipo: 'prestatarios',
-            prestatarios: {
-                idPrestatarios: 0,
-                telefono: '',
-                nombre: '',
-                apellido: ''
-            }
+        idUsuarios: 0,
+        username: '',
+        pasword: '',
+        tipo: 'prestatarios',
+        prestatarios: {
+            idPrestatarios: 0,
+            telefono: '',
+            nombre: '',
+            apellido: ''
+        }
 
-        };
+    };
 
     };
     $scope.getMiUsuario = function () {

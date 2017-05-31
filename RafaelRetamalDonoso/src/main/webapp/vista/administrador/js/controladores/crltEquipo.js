@@ -460,7 +460,88 @@ app.controller("equipoCtrl", function ($scope) {
 
 
     };
+    $scope.generarPdf = function () {
+        var columns = ["ID", "Equipo", "Marca", "Categoria", "Nombre", "Apellido"];
+        var data2 = [];
+        for (i = 0; i < $scope.equipos.length; i++) {
+            data2.push([$scope.equipos[i].idEquipo,
+                $scope.equipos[i].demoninacion,
+                (!$scope.equipos[i].marca) ? "No hay valor" : $scope.equipos[i].marca.nombre,
+                (!$scope.equipos[i].categoria) ? "No hay valor" : $scope.equipos[i].categoria.nombre,
+                (!$scope.equipos[i].prestatario) ? "No hay valor" : $scope.equipos[i].prestatario.nombre,
+                (!$scope.equipos[i].prestatario) ? "No hay valor" : $scope.equipos[i].prestatario.apellido]);
+        }
 
+
+        var doc = new jsPDF();
+        var doc = new jsPDF()
+        var imgData = null;
+        convertFileToDataURLviaFileReader("logonegro.png", function (resulta) {
+            doc.setFontSize(40)
+            doc.text(90, 20, "Equipos");
+            //alert(imgData);
+            imgData = resulta;
+            //alert(resulta);
+
+            doc.addImage(imgData, 'PNG', 10, 4, 28, 20)
+
+
+
+            doc.autoTable(columns, data2, {
+                margin: {top: 30}
+            }
+
+            );
+
+            doc.output("dataurlnewwindow");
+
+        });
+
+    };
+    $scope.demoFromHTML = function () {
+        var doc = new jsPDF('p', 'pt');
+        var elem = $('#example')[0];
+        var res = doc.autoTableHtmlToJson(elem);
+        doc.autoTable(res.columns, res.data);
+        doc.save("table.pdf");
+        var pdf = new jsPDF('p', 'pt', 'letter');
+        // source can be HTML-formatted string, or a reference
+        // to an actual DOM element from which the text will be scraped.
+        source = $('#pruebasPdf')[0];
+
+        // we support special element handlers. Register them with jQuery-style
+        // ID selector for either ID or node name. ("#iAmID", "div", "span" etc.)
+        // There is no support for any other type of selectors
+        // (class, of compound) at this time.
+        specialElementHandlers = {
+            // element with id of "bypass" - jQuery style selector
+            '#bypassme': function (element, renderer) {
+                // true = "handled elsewhere, bypass text extraction"
+                return true
+            }
+        };
+        margins = {
+            top: 20,
+            bottom: 60,
+            left: 20,
+            width: 522
+        };
+        // all coords and widths are in jsPDF instance's declared units
+        // 'inches' in this case
+        pdf.fromHTML(
+                source, // HTML string or DOM elem ref.
+                margins.left, // x coord
+                margins.top, {// y coord
+                    'width': margins.width, // max width of content on PDF
+                    'elementHandlers': specialElementHandlers
+                },
+                function (dispose) {
+                    // dispose: object with X, Y of the last line add to the PDF
+                    //          this allow the insertion of new lines after html
+                    pdf.save('Test.pdf');
+                }, margins
+                );
+    };
     $scope.inicializar = function () {
         $scope.getMarcas();
         $scope.getCategoria();
