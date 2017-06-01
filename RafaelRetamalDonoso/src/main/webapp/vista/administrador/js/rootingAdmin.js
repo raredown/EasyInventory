@@ -17,6 +17,10 @@ app.config(function ($routeProvider) {
                 templateUrl: "vista/equipo.jsp",
                 controller: "equipoCtrl"
             })
+            .when("/incidencia", {
+                templateUrl: "vista/incidencias.jsp",
+                controller: "incidenciasCtrl"
+            })
             .when("/categoria", {
                 templateUrl: "vista/categoria.jsp",
                 controller: "categoriaCtrl"
@@ -26,6 +30,61 @@ app.config(function ($routeProvider) {
                 controller: "marcaCtrl"
             });
 });
+app.controller("incidenciasCtrl", function ($scope) {
+    $scope.newIncidencia = {
+        idIncidencia: 0,
+        tipo: '',
+        estado: '',
+        prestatario: {idPrestatarios: 0},
+        equipo: {idEquipo: 0}
+    };
+
+    $scope.equipos = [];
+    $scope.prestatarios = [];
+    
+    $scope.getPrestatarios = function () {
+        $.ajax({
+            data: {"getPrestatarios": "toda"},
+            async: false,
+            url: '../../ControlPrestatarios',
+            type: 'post',
+            dataType: "json",
+            beforeSend: function () {
+
+            },
+            success: function (response) {
+                // alert("Inicialidad:"+$scope.marcas);
+                $scope.prestatarios = response;
+                // alert(response);
+//                alert("bien");
+                Command: toastr["success"]("Se han cargado los prestatarios correctamente!");
+
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": true,
+                    "positionClass": "toast-top-center",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
+            }, error: function (jqXHR, textStatus, errorThrown) {
+//                alert("mal");
+            }
+        });
+
+    };
+});
+
+
 function convertFileToDataURLviaFileReader(url, callback) {
     var xhr = new XMLHttpRequest();
     xhr.onload = function () {
