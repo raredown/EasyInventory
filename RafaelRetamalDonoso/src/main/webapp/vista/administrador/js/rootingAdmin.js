@@ -41,7 +41,7 @@ app.controller("incidenciasCtrl", function ($scope) {
 
     $scope.equipos = [];
     $scope.prestatarios = [];
-    
+
     $scope.getPrestatarios = function () {
         $.ajax({
             data: {"getPrestatarios": "toda"},
@@ -82,6 +82,133 @@ app.controller("incidenciasCtrl", function ($scope) {
         });
 
     };
+    $scope.getEquipos = function () {
+        $.ajax({
+            data: {"getEquipos": "toda"},
+            async: false,
+            url: '../../ControlEquipo',
+            type: 'post',
+            dataType: "json",
+            beforeSend: function () {
+
+            },
+            success: function (response) {
+                // alert("Inicialidad:"+$scope.marcas);
+
+                $scope.equipos = response;
+                Command: toastr["success"]("Se han cargado las equipo correctamente!");
+
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": true,
+                    "positionClass": "toast-top-center",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
+            }, error: function (jqXHR, textStatus, errorThrown) {
+                Command: toastr["error"]("No se ha podido cargar los equipos!");
+
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": true,
+                    "positionClass": "toast-top-center",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
+            }
+        });
+
+    };
+      $scope.addIncidencia = function () {
+
+        var parametros = {
+            "newincidencia": angular.toJson($scope.newEquipo)
+        };
+        $.ajax({
+            data: parametros,
+            url: '../../ControlEquipo',
+            type: 'post',
+            beforeSend: function () {
+
+            },
+            success: function (response) {
+                Command: toastr["success"]("Se han añadido correctamente!");
+
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": true,
+                    "positionClass": "toast-top-center",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
+            }, error: function (jqXHR, textStatus, errorThrown) {
+                Command: toastr["error"]("No se ha podido añadir!");
+
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": true,
+                    "positionClass": "toast-top-center",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
+            }
+        });
+        $scope.newEquipo =
+                {idEquipo: 0,
+                    demoninacion: '',
+                    descripcion: '',
+                    numeroSerie: '',
+                    marca: {idMarca: 0, nombre: ''},
+                    categoria: {idCategoria: 0, nombre: ''},
+                    prestatario: {idPrestatarios: 0}
+                };
+
+    };
+    $scope.inicializar = function () {
+    $scope.getEquipos();
+    $scope.getPrestatarios();
+    };
+    $scope.inicializar();
 });
 
 
