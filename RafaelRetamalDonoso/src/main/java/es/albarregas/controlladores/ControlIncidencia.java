@@ -12,6 +12,7 @@ import es.albarregas.modelo.Equipo;
 import es.albarregas.modelo.Incidencia;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -41,8 +42,12 @@ public class ControlIncidencia extends HttpServlet {
         IGenericoDAO gdao = daof.getGenericoDAO();
         if (request.getParameter("newincidencia") != null) {
             String json = request.getParameter("newincidencia");
-            Incidencia incidencia = gson.fromJson(json, Incidencia.class);
-           // incidencia
+            // Incidencia incidencia = gson.fromJson(json, Incidencia.class);
+            // incidencia
+            Incidencia incidencia = new Incidencia();
+            Date fecha = new Date();
+            java.sql.Date fechaSQL = new java.sql.Date(fecha.getTime());
+            incidencia.setFechaCreacion(fechaSQL);
             gdao.add(incidencia);
 
         }
