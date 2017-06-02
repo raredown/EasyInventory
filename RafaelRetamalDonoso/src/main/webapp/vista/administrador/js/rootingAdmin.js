@@ -139,14 +139,20 @@ app.controller("incidenciasCtrl", function ($scope) {
         });
 
     };
-      $scope.addIncidencia = function () {
-
+    $scope.addIncidencia = function () {
+        $scope.newIncidencia = {
+        idIncidencia: 0,
+        tipo: '',
+        estado: '',
+        prestatario: null,
+        equipo: null
+    };
         var parametros = {
-            "newincidencia": angular.toJson($scope.newEquipo)
+            "newincidencia": angular.toJson($scope.newIncidencia)
         };
         $.ajax({
             data: parametros,
-            url: '../../ControlEquipo',
+            url: '../../ControlIncidencia',
             type: 'post',
             beforeSend: function () {
 
@@ -193,20 +199,18 @@ app.controller("incidenciasCtrl", function ($scope) {
                 };
             }
         });
-        $scope.newEquipo =
-                {idEquipo: 0,
-                    demoninacion: '',
-                    descripcion: '',
-                    numeroSerie: '',
-                    marca: {idMarca: 0, nombre: ''},
-                    categoria: {idCategoria: 0, nombre: ''},
-                    prestatario: {idPrestatarios: 0}
-                };
+        $scope.newIncidencia = {
+            idIncidencia: 0,
+            tipo: '',
+            estado: '',
+            prestatario: {idPrestatarios: 0},
+            equipo: {idEquipo: 0}
+        };
 
     };
     $scope.inicializar = function () {
-    $scope.getEquipos();
-    $scope.getPrestatarios();
+        $scope.getEquipos();
+        $scope.getPrestatarios();
     };
     $scope.inicializar();
 });

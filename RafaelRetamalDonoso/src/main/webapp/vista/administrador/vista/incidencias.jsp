@@ -34,7 +34,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="addEquipo()">Añadir</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="addIncidencia()">Añadir</button>
                     <button type="button" class="btn btn-info" data-dismiss="modal" >Cancelar</button>
                 </div>
             </div>

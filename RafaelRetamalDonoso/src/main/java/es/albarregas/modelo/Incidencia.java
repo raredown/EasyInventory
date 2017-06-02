@@ -8,6 +8,7 @@ package es.albarregas.modelo;
 import java.io.Serializable;
 import java.sql.Date;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,11 +31,25 @@ public class Incidencia implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idIncidencia;
 
-    @Temporal(TemporalType.TIMESTAMP)
     private Date fechaCreacion;
+    private Date fechaTerminacion;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaFinalizacion;
+    public Date getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    public Date getFechaTerminacion() {
+        return fechaTerminacion;
+    }
+
+    public void setFechaTerminacion(Date fechaTerminacion) {
+        this.fechaTerminacion = fechaTerminacion;
+    }
+
 
     private String tipo;
     private String estado;
@@ -61,23 +76,6 @@ public class Incidencia implements Serializable {
     public void setIdIncidencia(int idIncidencia) {
         this.idIncidencia = idIncidencia;
     }
-
-    public Date getFechaCreacion() {
-        return fechaCreacion;
-    }
-
-    public void setFechaCreacion(Date fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
-    }
-
-    public Date getFechaFinalizacion() {
-        return fechaFinalizacion;
-    }
-
-    public void setFechaFinalizacion(Date fechaFinalizacion) {
-        this.fechaFinalizacion = fechaFinalizacion;
-    }
-
     public String getTipo() {
         return tipo;
     }
