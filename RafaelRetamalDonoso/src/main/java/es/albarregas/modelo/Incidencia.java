@@ -8,6 +8,7 @@ package es.albarregas.modelo;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.sql.Timestamp;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -32,28 +33,14 @@ public class Incidencia implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idIncidencia;
 
-    private Date fechaCreacion;
-    private Date fechaTerminacion;
-
-    public Date getFechaCreacion() {
-        return fechaCreacion;
-    }
-
-    public void setFechaCreacion(Date fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
-    }
-
-    public Date getFechaTerminacion() {
-        return fechaTerminacion;
-    }
-
-    public void setFechaTerminacion(Date fechaTerminacion) {
-        this.fechaTerminacion = fechaTerminacion;
-    }
-
-
+    @Column
+    private Timestamp createDate;
     private String tipo;
     private String estado;
+    private String descripcion;
+    private String resolucion;
+
+
     @OneToOne(cascade = {CascadeType.PERSIST})
     @JoinColumn(name = "idPrestatario")
     private Prestatarios prestatario = new Prestatarios();
@@ -61,6 +48,43 @@ public class Incidencia implements Serializable {
     @OneToOne(cascade = {CascadeType.PERSIST})
     @JoinColumn(name = "idEquipo")
     private Equipo equipo = new Equipo();
+
+    @Column
+    private Timestamp seResolvio;
+
+    public Timestamp getSeResolvio() {
+        return seResolvio;
+    }
+
+    public void setSeResolvio(Timestamp seResolvio) {
+        this.seResolvio = seResolvio;
+    }
+    
+        public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public String getResolucion() {
+        return resolucion;
+    }
+
+    public void setResolucion(String resolucion) {
+        this.resolucion = resolucion;
+    }
+    
+    
+
+    public Timestamp getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Timestamp createDate) {
+        this.createDate = createDate;
+    }
 
     public Equipo getEquipo() {
         return equipo;
@@ -77,6 +101,7 @@ public class Incidencia implements Serializable {
     public void setIdIncidencia(int idIncidencia) {
         this.idIncidencia = idIncidencia;
     }
+
     public String getTipo() {
         return tipo;
     }

@@ -30,7 +30,29 @@
                 </div>
                 <div class="modal-body">
                     <form>
-                        
+                        <div class="form-group">
+                            <label for="Descripcion">Descripción:</label>
+                            <textarea class="form-control" rows="5" id="comment" ng-model="newIncidencia.descripcion"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="sel1">Equipo:</label>
+                            <select class="form-control" id="sel1" ng-model="newIncidencia.equipo">
+                                <!--<option value="0" selected="true">Nueva Marca</option>-->
+                                <option ng-repeat="option in equipos" value="{{option}}">{{option.demoninacion}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="sel1">Prestatario:</label>
+                            <select class="form-control" id="sel1" ng-model="newIncidencia.prestatario">
+                                <!--<option value="0" selected="true">Nueva Marca</option>-->
+                                <option ng-repeat="option in prestatarios" value="{{option}}">{{option.nombre}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="tipo">Tipo:</label>
+                            <label class="radio-inline"><input type="radio" name="optradio" ng-model="newIncidencia.tipo" value="error">Error</label>
+                            <label class="radio-inline"><input type="radio" name="optradio" ng-model="newIncidencia.tipo" value="pedido">Pedido</label>
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">

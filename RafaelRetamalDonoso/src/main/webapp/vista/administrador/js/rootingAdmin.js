@@ -33,10 +33,11 @@ app.config(function ($routeProvider) {
 app.controller("incidenciasCtrl", function ($scope) {
     $scope.newIncidencia = {
         idIncidencia: 0,
-        tipo: '',
-        estado: '',
-        prestatario: {idPrestatarios: 0},
-        equipo: {idEquipo: 0}
+        tipo: 'error',
+        estado: 'abierta',
+        descripcion: '',
+        prestatario: null,
+        equipo: null
     };
 
     $scope.equipos = [];
@@ -140,13 +141,14 @@ app.controller("incidenciasCtrl", function ($scope) {
 
     };
     $scope.addIncidencia = function () {
-        $scope.newIncidencia = {
-        idIncidencia: 0,
-        tipo: '',
-        estado: '',
-        prestatario: null,
-        equipo: null
-    };
+        if (typeof $scope.newIncidencia.prestatario === 'string') {
+            $scope.newIncidencia.prestatario = JSON.parse($scope.newIncidencia.prestatario);
+        }
+        if (typeof $scope.newIncidencia.equipo === 'string') {
+            $scope.newIncidencia.equipo = JSON.parse($scope.newIncidencia.equipo);
+        }
+      
+
         var parametros = {
             "newincidencia": angular.toJson($scope.newIncidencia)
         };
@@ -201,10 +203,11 @@ app.controller("incidenciasCtrl", function ($scope) {
         });
         $scope.newIncidencia = {
             idIncidencia: 0,
-            tipo: '',
-            estado: '',
-            prestatario: {idPrestatarios: 0},
-            equipo: {idEquipo: 0}
+            tipo: 'error',
+            estado: 'abierta',
+            descripcion: '',
+            prestatario: null,
+            equipo: null
         };
 
     };
