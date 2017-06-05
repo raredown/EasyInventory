@@ -17,6 +17,7 @@
         <script src="js//controladores/crtlCategoria.js"></script>
         <script src="js/controladores/crltEquipo.js"></script>
         <script src="js/controladores/crtlUsuarioAdmin.js"></script>
+        <script src="js/controladores/crltIncidencia.js"></script>
         <link href="css/datatable.css" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.0/jspdf.plugin.autotable.js"></script>
@@ -34,15 +35,15 @@
                     <ul class="dropdown-menu">
                         <li><a href="#/">Cambio en la cuenta <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
                         <li class="divider"></li>
-                        <li><a href="#usuario">Control de usuario <span class="glyphicon glyphicon-stats pull-right"></span></a></li>
+                        <li><a href="#usuario">Control de usuario <span class="glyphicon glyphicon-user pull-righ"></span></a></li>
                         <li class="divider"></li>
-                        <li><a href="#incidencia">Incidencia <span class="badge pull-right"> 42 </span></a></li>
+                        <li><a href="#incidencia">Incidencia <span class="badge pull-right"></span></a></li>
                         <li class="divider"></li>
-                        <li><a href="#equipo">Administrar equipos<span class="glyphicon glyphicon-heart pull-right"></span></a></li>
+                        <li><a href="#equipo">Administrar equipos<span class="glyphicon glyphicon-cog pull-right"></span></a></li>
                         <li class="divider"></li>
-                        <li><a href="#marca">Administrar marcas<span class="glyphicon glyphicon-heart pull-right"></span></a></li>
+                        <li><a href="#marca">Administrar marcas<span class="glyphicon glyphicon-cog pull-right"></span></a></li>
                         <li class="divider"></li>
-                        <li><a href="#categoria">Administrar categorias<span class="glyphicon glyphicon-heart pull-right"></span></a></li>
+                        <li><a href="#categoria">Administrar categorias<span class="glyphicon glyphicon-cog pull-right"></span></a></li>
                         <li class="divider"></li>
                         <li><a href="#">Desconectar <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
                     </ul>

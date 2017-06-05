@@ -8,6 +8,48 @@ app.controller("equipoCtrl", function ($scope) {
     $scope.categorias = [];
     $scope.equipos = [];
     $scope.prestatarios = [];
+    $scope.historico = [];
+
+    $scope.getHistorico = function (id) {
+        $.ajax({
+            data: {"getHistorico": id},
+            async: false,
+            url: '../../ControlIncidencia',
+            type: 'post',
+            dataType: "json",
+            beforeSend: function () {
+
+            },
+            success: function (response) {
+                // alert("Inicialidad:"+$scope.marcas);
+                $scope.historico = response;
+                // alert(response);
+//                alert("bien");
+                Command: toastr["success"]("Se han cargado las incidencia correctamente!");
+
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": true,
+                    "positionClass": "toast-top-center",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
+            }, error: function (jqXHR, textStatus, errorThrown) {
+//                alert("mal");
+            }
+        });
+
+    };
     $scope.newEquipo =
             {idEquipo: 0,
                 demoninacion: '',
@@ -504,7 +546,7 @@ app.controller("equipoCtrl", function ($scope) {
         var res = doc.autoTableHtmlToJson(elem);
         doc.autoTable(res.columns, res.data);
         doc.save("table.pdf");
-        
+
     };
     $scope.inicializar = function () {
         $scope.getMarcas();

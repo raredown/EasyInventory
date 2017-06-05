@@ -54,39 +54,50 @@ public class Testing extends HttpServlet {
         prestatarios.setTelefono("924670924");
         usuario.setPrestatarios(prestatarios);
         gdao.add(usuario);
-        usuario.setPasword("albarregas");
-        usuario.setTipo("admin");
-        usuario.setUsername("luis");
-        prestatarios.setNombre("Luis");
-        prestatarios.setApellido("Nose Nose");
-        prestatarios.setTelefono("924670923");
-        usuario.setPrestatarios(prestatarios);
-        gdao.add(usuario);
-        usuario.setPasword("asd");
-        usuario.setTipo("admin");
-        usuario.setUsername("asd");
-        prestatarios.setNombre("rafa");
-        prestatarios.setApellido("Nose Nose");
-        prestatarios.setTelefono("924670924");
-        usuario.setPrestatarios(prestatarios);
-        gdao.add(usuario);
-        usuario.setPasword("albarregas");
-        usuario.setTipo("prestatarios");
-        usuario.setUsername("manuel");
-        prestatarios.setNombre("Manuel");
-        prestatarios.setApellido("Marcos Porra");
-        prestatarios.setTelefono("924670923");
-        usuario.setPrestatarios(prestatarios);
-        gdao.add(usuario);
+
+        Usuario usuario1 = new Usuario();
+        Prestatarios prestatarios1 = new Prestatarios();
+        usuario1.setPasword("albarregas");
+        usuario1.setTipo("admin");
+        usuario1.setUsername("luis");
+        prestatarios1.setNombre("Luis");
+        prestatarios1.setApellido("Nose Nose");
+        prestatarios1.setTelefono("924670923");
+        usuario1.setPrestatarios(prestatarios1);
+        gdao.add(usuario1);
+
+        Usuario usuario2 = new Usuario();
+        Prestatarios prestatarios2 = new Prestatarios();
+        usuario2.setPasword("asd");
+        usuario2.setTipo("admin");
+        usuario2.setUsername("asd");
+        prestatarios2.setNombre("rafa");
+        prestatarios2.setApellido("Nose Nose");
+        prestatarios2.setTelefono("924670924");
+        usuario2.setPrestatarios(prestatarios2);
+        gdao.add(usuario2);
+
+        Usuario usuario3 = new Usuario();
+        Prestatarios prestatarios3 = new Prestatarios();
+        usuario3.setPasword("albarregas");
+        usuario3.setTipo("prestatarios");
+        usuario3.setUsername("manuel");
+        prestatarios3.setNombre("Manuel");
+        prestatarios3.setApellido("Marcos Porra");
+        prestatarios3.setTelefono("924670923");
+        usuario3.setPrestatarios(prestatarios3);
+        gdao.add(usuario3);
         for (int i = 0; i < 20; i++) {
-            usuario.setPasword("albarregas");
-            usuario.setTipo("prestatarios");
-            usuario.setUsername("usuario" + i);
-            prestatarios.setNombre("Usuario" + 1);
-            prestatarios.setApellido("Nose Nose");
-            prestatarios.setTelefono("924670924");
-            usuario.setPrestatarios(prestatarios);
-            gdao.add(usuario);
+            Usuario usuario4 = new Usuario();
+            Prestatarios prestatarios4 = new Prestatarios();
+            usuario4.setPasword("albarregas");
+            usuario4.setTipo("prestatarios");
+            usuario4.setUsername("usuario" + i);
+            prestatarios4.setNombre("Usuario" + 1);
+            prestatarios4.setApellido("Nose Nose");
+            prestatarios4.setTelefono("924670924");
+            usuario4.setPrestatarios(prestatarios4);
+            gdao.add(usuario4);
 
         }
 

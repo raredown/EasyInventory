@@ -83,6 +83,16 @@ public class ControlIncidencia extends HttpServlet {
 
             gdao.add(incidencia);
 
+        }else if (request.getParameter("getHistorico") != null) {
+            int idHistorico = Integer.parseInt(request.getParameter("getHistorico"));
+            ArrayList<Incidencia> lista = new ArrayList();
+            lista = (ArrayList<Incidencia>) gdao.get("Incidencia where equipo.idEquipo ="+idHistorico);
+            String prueba;
+            String representacionJSON = gson.toJson(lista);
+            // System.out.print(representacionJSON);
+            //response.setCharacterEncoding("UTF-8");
+            response.getWriter().write(representacionJSON);
+            
         }
         
         

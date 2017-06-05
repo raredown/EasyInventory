@@ -53,7 +53,12 @@
                             <td>{{x.categoria.nombre}}</td>
                             <td>{{x.prestatario.nombre}}</td>
                             <td>{{x.prestatario.apellido}}</td>
-                            <td><a data-toggle="modal" data-target="#modificar" ng-click="elecionEquipo(x.idEquipo)"><span class="glyphicon glyphicon-pencil pull-center glyfmod"></span></a><a data-toggle="modal" data-target="#borrar" ng-click="elecionEquipo(x.idEquipo)"><span class="glyphicon glyphicon-remove glyfrem"></span></a></td>
+                            <td>
+                                <a data-toggle="modal" data-target="#modificar" ng-click="elecionEquipo(x.idEquipo)"><span class="glyphicon glyphicon-pencil pull-center glyfmod"></span></a>
+                                <a data-toggle="modal" data-target="#historico" ng-click="getHistorico(x.idEquipo)"><span class="glyphicon glyphicon-eye-open glyfmod"></span></a>
+                                <a data-toggle="modal" data-target="#borrar" ng-click="elecionEquipo(x.idEquipo)"><span class="glyphicon glyphicon-remove glyfrem"></span></a>
+
+                            </td>
                         </tr>
                     </tbody>
 
@@ -215,6 +220,47 @@
 
         </div>
     </div>
+    <!--Dialog Historico-->
+    <div class="modal fade" id="historico" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Historico</h4>
+                </div>
+                <div class="modal-body">
+                  
+
+                    <div class="panel panel-primary" ng-repeat="x in historico">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                {{x.tipo}}
+                            </h4>
+                        </div>
+
+                        <div class="panel-body">
+                            -Fecha de inicio: {{x.createDate}}<br>
+                            <p>Descripción del problema fue {{x.descripcion}}. La puso<strong>{{x.prestatario.nombre}}</strong> </p>
+                            -Fecha de resolución:{{x.seResolvio}}<br>
+                            <p>¿Cómo se resolvió? {{x.resolucion}}</p>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+
+            <button type="button" class="btn btn-info" data-dismiss="modal" >Cerrar</button>
+        </div>
+    </div>
+
+</div>
+</div>
 
 
 </div>
