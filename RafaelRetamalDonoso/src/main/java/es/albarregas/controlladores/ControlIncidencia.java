@@ -11,10 +11,12 @@ import es.albarregas.dao.IGenericoDAO;
 import es.albarregas.daofactory.DAOFactory;
 import es.albarregas.modelo.Equipo;
 import es.albarregas.modelo.Incidencia;
+import es.albarregas.modelo.Marca;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -57,7 +59,33 @@ public class ControlIncidencia extends HttpServlet {
 
             gdao.add(incidencia);
 
+        } else if (request.getParameter("getIncidencia") != null) {
+            ArrayList<Incidencia> lista = new ArrayList();
+            lista = (ArrayList<Incidencia>) gdao.get("Incidencia");
+            String prueba;
+            String representacionJSON = gson.toJson(lista);
+            // System.out.print(representacionJSON);
+            //response.setCharacterEncoding("UTF-8");
+            response.getWriter().write(representacionJSON);
+            
+        }else if (request.getParameter("modincidencia") != null) {
+            String json = request.getParameter("modincidencia");
+             Incidencia incidencia = gson.fromJson(json, Incidencia.class);
+            // incidencia
+            //Incidencia incidencia = new Incidencia();
+            Date fecha = new Date();
+            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+            //java.sql.Date fechaSQL = new java.sql.Date(fecha.getTime());
+            //String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+            //Timestamp timestamp = new Timestamp(fecha.getTime());
+            incidencia.setSeResolvio(timestamp);
+            incidencia.setEstado("cerrada");
+
+            gdao.add(incidencia);
+
         }
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
