@@ -12,22 +12,6 @@ app.config(function ($routeProvider) {
             .when("/usuario", {
                 templateUrl: "vista/usuario.jsp",
                 controller: "usuarioCtrl"
-            })
-            .when("/equipo", {
-                templateUrl: "vista/equipo.jsp",
-                controller: "equipoCtrl"
-            })
-            .when("/incidencia", {
-                templateUrl: "vista/incidencias.jsp",
-                controller: "incidenciasCtrl"
-            })
-            .when("/categoria", {
-                templateUrl: "vista/categoria.jsp",
-                controller: "categoriaCtrl"
-            })
-            .when("/marca", {
-                templateUrl: "vista/marca.jsp",
-                controller: "marcaCtrl"
             });
 });
 toastr.options = {
@@ -47,16 +31,4 @@ toastr.options = {
     "showMethod": "fadeIn",
     "hideMethod": "fadeOut"
 };
-function convertFileToDataURLviaFileReader(url, callback) {
-    var xhr = new XMLHttpRequest();
-    xhr.onload = function () {
-        var reader = new FileReader();
-        reader.onloadend = function () {
-            callback(reader.result);
-        };
-        reader.readAsDataURL(xhr.response);
-    };
-    xhr.open('GET', url);
-    xhr.responseType = 'blob';
-    xhr.send();
-}
+

@@ -4,19 +4,7 @@
  * and open the template in the editor.
  */
 app.controller("usuarioCtrl", function ($scope) {
-    $scope.newUsuario = {
-        idUsuarios: 0,
-        username: '',
-        pasword: '1234',
-        tipo: 'prestatarios',
-        prestatarios: {
-            idPrestatarios: 0,
-            telefono: '',
-            nombre: '',
-            apellido: ''
-        }
 
-    };
     $scope.newPass = '';
     $scope.miUsuario = {
         idUsuarios: 10,
@@ -29,41 +17,6 @@ app.controller("usuarioCtrl", function ($scope) {
             nombre: 'rafa',
             apellido: 'retamal donoso'
         }
-
-    };
-    $scope.addUsuario = function () {
-        // $scope.categorias.push($scope.newCategoria);
-        var parametros = {
-            "newusuario": angular.toJson($scope.newUsuario)
-        };
-        $.ajax({
-            data: parametros,
-            url: '../../ControlUsuarioAdmin',
-            type: 'post',
-            beforeSend: function () {
-
-            },
-            success: function (response) {
-                Command: toastr["success"]("Se ha añadido correctamente!");
-
-            }, error: function (jqXHR, textStatus, errorThrown) {
-                Command: toastr["error"]("No se ha podido añadir,ya existe el usuario!");
-
-            }
-        });
-        $scope.newUsuario = {
-        idUsuarios: 0,
-        username: '',
-        pasword: '1234',
-        tipo: 'prestatarios',
-        prestatarios: {
-            idPrestatarios: 0,
-            telefono: '',
-            nombre: '',
-            apellido: ''
-        }
-
-    };
 
     };
     $scope.getMiUsuario = function () {

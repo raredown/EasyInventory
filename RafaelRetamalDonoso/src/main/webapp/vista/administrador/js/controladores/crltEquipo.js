@@ -27,31 +27,14 @@ app.controller("equipoCtrl", function ($scope) {
 //                alert("bien");
                 Command: toastr["success"]("Se han cargado las incidencia correctamente!");
 
-                toastr.options = {
-                    "closeButton": false,
-                    "debug": false,
-                    "newestOnTop": false,
-                    "progressBar": true,
-                    "positionClass": "toast-top-center",
-                    "preventDuplicates": false,
-                    "onclick": null,
-                    "showDuration": "300",
-                    "hideDuration": "1000",
-                    "timeOut": "5000",
-                    "extendedTimeOut": "1000",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                };
+       
             }, error: function (jqXHR, textStatus, errorThrown) {
 //                alert("mal");
             }
         });
 
     };
-    $scope.newEquipo =
-            {idEquipo: 0,
+    $scope.newEquipo ={idEquipo: 0,
                 demoninacion: '',
                 descripcion: '',
                 numeroSerie: '',
@@ -103,43 +86,11 @@ app.controller("equipoCtrl", function ($scope) {
             success: function (response) {
                 Command: toastr["success"]("Se han añadido correctamente!");
 
-                toastr.options = {
-                    "closeButton": false,
-                    "debug": false,
-                    "newestOnTop": false,
-                    "progressBar": true,
-                    "positionClass": "toast-top-center",
-                    "preventDuplicates": false,
-                    "onclick": null,
-                    "showDuration": "300",
-                    "hideDuration": "1000",
-                    "timeOut": "5000",
-                    "extendedTimeOut": "1000",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                };
+               
             }, error: function (jqXHR, textStatus, errorThrown) {
                 Command: toastr["error"]("No se ha podido añadir!");
 
-                toastr.options = {
-                    "closeButton": false,
-                    "debug": false,
-                    "newestOnTop": false,
-                    "progressBar": true,
-                    "positionClass": "toast-top-center",
-                    "preventDuplicates": false,
-                    "onclick": null,
-                    "showDuration": "300",
-                    "hideDuration": "1000",
-                    "timeOut": "5000",
-                    "extendedTimeOut": "1000",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                };
+             
             }
         });
         $scope.newEquipo =
@@ -170,23 +121,6 @@ app.controller("equipoCtrl", function ($scope) {
 //                alert("bien");
                 Command: toastr["success"]("Se han cargado las categoria correctamente!");
 
-                toastr.options = {
-                    "closeButton": false,
-                    "debug": false,
-                    "newestOnTop": false,
-                    "progressBar": true,
-                    "positionClass": "toast-top-center",
-                    "preventDuplicates": false,
-                    "onclick": null,
-                    "showDuration": "300",
-                    "hideDuration": "1000",
-                    "timeOut": "5000",
-                    "extendedTimeOut": "1000",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                };
             }, error: function (jqXHR, textStatus, errorThrown) {
 //                alert("mal");
             }
@@ -210,23 +144,6 @@ app.controller("equipoCtrl", function ($scope) {
 //                alert("bien");
                 Command: toastr["success"]("Se han cargado los prestatarios correctamente!");
 
-                toastr.options = {
-                    "closeButton": false,
-                    "debug": false,
-                    "newestOnTop": false,
-                    "progressBar": true,
-                    "positionClass": "toast-top-center",
-                    "preventDuplicates": false,
-                    "onclick": null,
-                    "showDuration": "300",
-                    "hideDuration": "1000",
-                    "timeOut": "5000",
-                    "extendedTimeOut": "1000",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                };
             }, error: function (jqXHR, textStatus, errorThrown) {
 //                alert("mal");
             }
@@ -249,45 +166,13 @@ app.controller("equipoCtrl", function ($scope) {
                 $scope.marcas = response;
                 Command: toastr["success"]("Se han cargado las marcas correctamente!");
 
-                toastr.options = {
-                    "closeButton": false,
-                    "debug": false,
-                    "newestOnTop": false,
-                    "progressBar": true,
-                    "positionClass": "toast-top-center",
-                    "preventDuplicates": false,
-                    "onclick": null,
-                    "showDuration": "300",
-                    "hideDuration": "1000",
-                    "timeOut": "5000",
-                    "extendedTimeOut": "1000",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                };
+                
                 // alert(response);
 //                alert("bien");
             }, error: function (jqXHR, textStatus, errorThrown) {
                 Command: toastr["error"]("Problema ha cargar marca!");
 
-                toastr.options = {
-                    "closeButton": false,
-                    "debug": false,
-                    "newestOnTop": false,
-                    "progressBar": true,
-                    "positionClass": "toast-top-center",
-                    "preventDuplicates": false,
-                    "onclick": null,
-                    "showDuration": "300",
-                    "hideDuration": "1000",
-                    "timeOut": "5000",
-                    "extendedTimeOut": "1000",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                };
+            
             }
         });
 
@@ -308,43 +193,11 @@ app.controller("equipoCtrl", function ($scope) {
                 $scope.equipos = response;
                 Command: toastr["success"]("Se han cargado las equipo correctamente!");
 
-                toastr.options = {
-                    "closeButton": false,
-                    "debug": false,
-                    "newestOnTop": false,
-                    "progressBar": true,
-                    "positionClass": "toast-top-center",
-                    "preventDuplicates": false,
-                    "onclick": null,
-                    "showDuration": "300",
-                    "hideDuration": "1000",
-                    "timeOut": "5000",
-                    "extendedTimeOut": "1000",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                };
+                
             }, error: function (jqXHR, textStatus, errorThrown) {
                 Command: toastr["error"]("No se ha podido cargar los equipos!");
 
-                toastr.options = {
-                    "closeButton": false,
-                    "debug": false,
-                    "newestOnTop": false,
-                    "progressBar": true,
-                    "positionClass": "toast-top-center",
-                    "preventDuplicates": false,
-                    "onclick": null,
-                    "showDuration": "300",
-                    "hideDuration": "1000",
-                    "timeOut": "5000",
-                    "extendedTimeOut": "1000",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                };
+               
             }
         });
 
@@ -392,23 +245,7 @@ app.controller("equipoCtrl", function ($scope) {
             success: function (response) {
                 Command: toastr["success"]("Se ha actualizado correctamente!");
 
-                toastr.options = {
-                    "closeButton": false,
-                    "debug": false,
-                    "newestOnTop": false,
-                    "progressBar": true,
-                    "positionClass": "toast-top-center",
-                    "preventDuplicates": false,
-                    "onclick": null,
-                    "showDuration": "300",
-                    "hideDuration": "1000",
-                    "timeOut": "5000",
-                    "extendedTimeOut": "1000",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                };
+               
                 $scope.modEquipo = {idEquipo: 0,
                     demoninacion: '',
                     descripcion: '',
@@ -421,23 +258,7 @@ app.controller("equipoCtrl", function ($scope) {
             error: function (jqXHR, textStatus, errorThrown) {
                 Command: toastr["error"]("No se ha podido actualizar!");
 
-                toastr.options = {
-                    "closeButton": false,
-                    "debug": false,
-                    "newestOnTop": false,
-                    "progressBar": true,
-                    "positionClass": "toast-top-right",
-                    "preventDuplicates": false,
-                    "onclick": null,
-                    "showDuration": "300",
-                    "hideDuration": "1000",
-                    "timeOut": "5000",
-                    "extendedTimeOut": "1000",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                };
+               
             }
         });
 
@@ -459,44 +280,12 @@ app.controller("equipoCtrl", function ($scope) {
                 window.location.href = '';
                 Command: toastr["success"]("Se ha borrado correctamente!");
 
-                toastr.options = {
-                    "closeButton": false,
-                    "debug": false,
-                    "newestOnTop": false,
-                    "progressBar": true,
-                    "positionClass": "toast-top-center",
-                    "preventDuplicates": false,
-                    "onclick": null,
-                    "showDuration": "300",
-                    "hideDuration": "1000",
-                    "timeOut": "5000",
-                    "extendedTimeOut": "1000",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                };
+              
 
             }, error: function (jqXHR, textStatus, errorThrown) {
                 Command: toastr["error"]("No se ha podido borrar!");
 
-                toastr.options = {
-                    "closeButton": false,
-                    "debug": false,
-                    "newestOnTop": false,
-                    "progressBar": true,
-                    "positionClass": "toast-top-center",
-                    "preventDuplicates": false,
-                    "onclick": null,
-                    "showDuration": "300",
-                    "hideDuration": "1000",
-                    "timeOut": "5000",
-                    "extendedTimeOut": "1000",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                };
+              
             }
         });
 
@@ -545,7 +334,7 @@ app.controller("equipoCtrl", function ($scope) {
         var elem = $('#example')[0];
         var res = doc.autoTableHtmlToJson(elem);
         doc.autoTable(res.columns, res.data);
-        doc.save("table.pdf");
+        doc.output("dataurlnewwindow");
 
     };
     $scope.inicializar = function () {
@@ -563,7 +352,7 @@ app.controller("equipoCtrl", function ($scope) {
                 "sProcessing": "Procesando...",
                 "sLengthMenu": "Mostrar _MENU_ registros",
                 "sZeroRecords": "No se encontraron resultados",
-                "sEmptyTable": "NingÃºn dato disponible en esta tabla",
+                "sEmptyTable": "Ningún dato disponible en esta tabla",
                 "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
                 "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
                 "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",

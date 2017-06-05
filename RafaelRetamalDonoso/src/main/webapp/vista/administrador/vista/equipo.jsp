@@ -66,9 +66,9 @@
 
             </div>
             <div class="panel-footer">
-                <a data-original-title="Broadcast Message" type="button" class="btn btn-sm btn-primary" ng-click="generarPdf()"><i class="glyphicon glyphicon-plus"></i></a>
+                <a data-original-title="Broadcast Message" type="button" class="btn btn-sm btn-primary" ng-click="generarPdf()"><i class="glyphicon glyphicon-print"></i></a>
 
-                <a data-original-title="Broadcast Message" type="button" class="btn btn-sm btn-primary" ng-click="demoFromHTML()"><i class="glyphicon glyphicon-plus"></i></a>
+                <a data-original-title="Broadcast Message" type="button" class="btn btn-sm btn-primary" ng-click="demoFromHTML()"><i class="glyphicon glyphicon-filter"></i></a>
             </div>
         </div>
     </div>

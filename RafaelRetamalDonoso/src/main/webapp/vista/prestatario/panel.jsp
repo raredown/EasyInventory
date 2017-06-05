@@ -11,20 +11,14 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <jsp:include page="../../vista/includes/head.jsp" />
-        <script src="js/rootingAdmin.js"></script>
         <script src="js/datatable.js"></script>
-        <script src="js/controladores/crtlMarca.js"></script>
-        <script src="js/controladores/crtlCategoria.js"></script>
-        <script src="js/controladores/crltEquipo.js"></script>
-        <script src="js/controladores/crtlUsuarioAdmin.js"></script>
-        <script src="js/controladores/crltIncidencia.js"></script>
-        <link href="css/datatable.css" rel="stylesheet">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.0/jspdf.plugin.autotable.js"></script>
+        <script src="js/rootingPrestatario.js"></script>
+        <script src="js/controladores/crtlUsuario.js"></script>
+
+        <link href="css/datatable.css" rel="stylesheet"> 
         <title>JSP Page</title>
     </head>
     <body ng-app="myApp" class="container-fluid">
-
         <jsp:include page="../../vista/includes/cabecera.jsp" />
         <br>
         <br>
@@ -36,15 +30,11 @@
                     <ul class="dropdown-menu">
                         <li><a href="#/">Inicio <span class="glyphicon glyphicon-home pull-right"></span></a></li>
                         <li class="divider"></li>
-                        <li><a href="#usuario">Control de usuario <span class="glyphicon glyphicon-user pull-right"></span></a></li>
+                        <li><a href="#usuario">Mi usuario <span class="glyphicon glyphicon-user pull-right"></span></a></li>
                         <li class="divider"></li>
                         <li><a href="#incidencia">Incidencia <span class="glyphicon glyphicon-wrench pull-right"></span></a></li>
                         <li class="divider"></li>
-                        <li><a href="#equipo">Administrar equipos<span class="glyphicon glyphicon-hdd pull-right"></span></a></li>
-                        <li class="divider"></li>
-                        <li><a href="#marca">Administrar marcas<span class="glyphicon glyphicon-tag pull-right"></span></a></li>
-                        <li class="divider"></li>
-                        <li><a href="#categoria">Administrar categorias<span class="glyphicon glyphicon-tag pull-right"></span></a></li>
+                        <li><a href="#equipo">Ver equipos<span class="glyphicon glyphicon-hdd pull-right"></span></a></li>
                         <li class="divider"></li>
                         <li><a href="#">Desconectar <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
                     </ul>
