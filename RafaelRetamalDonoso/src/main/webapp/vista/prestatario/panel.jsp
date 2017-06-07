@@ -14,6 +14,7 @@
         <script src="js/datatable.js"></script>
         <script src="js/rootingPrestatario.js"></script>
         <script src="js/controladores/crtlUsuario.js"></script>
+        <script src="js/controladores/crtlEquipos.js"></script>
 
         <link href="css/datatable.css" rel="stylesheet"> 
         <title>JSP Page</title>
