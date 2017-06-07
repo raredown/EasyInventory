@@ -12,6 +12,7 @@ import es.albarregas.daofactory.DAOFactory;
 import es.albarregas.modelo.Equipo;
 import es.albarregas.modelo.Incidencia;
 import es.albarregas.modelo.Marca;
+import es.albarregas.modelo.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Timestamp;
@@ -23,6 +24,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -47,7 +49,7 @@ public class ControlIncidencia extends HttpServlet {
         IGenericoDAO gdao = daof.getGenericoDAO();
         if (request.getParameter("newincidencia") != null) {
             String json = request.getParameter("newincidencia");
-             Incidencia incidencia = gson.fromJson(json, Incidencia.class);
+            Incidencia incidencia = gson.fromJson(json, Incidencia.class);
             // incidencia
             //Incidencia incidencia = new Incidencia();
             Date fecha = new Date();
@@ -67,10 +69,10 @@ public class ControlIncidencia extends HttpServlet {
             // System.out.print(representacionJSON);
             //response.setCharacterEncoding("UTF-8");
             response.getWriter().write(representacionJSON);
-            
-        }else if (request.getParameter("modincidencia") != null) {
+
+        } else if (request.getParameter("modincidencia") != null) {
             String json = request.getParameter("modincidencia");
-             Incidencia incidencia = gson.fromJson(json, Incidencia.class);
+            Incidencia incidencia = gson.fromJson(json, Incidencia.class);
             // incidencia
             //Incidencia incidencia = new Incidencia();
             Date fecha = new Date();
@@ -83,19 +85,30 @@ public class ControlIncidencia extends HttpServlet {
 
             gdao.add(incidencia);
 
-        }else if (request.getParameter("getHistorico") != null) {
+        } else if (request.getParameter("getHistorico") != null) {
             int idHistorico = Integer.parseInt(request.getParameter("getHistorico"));
             ArrayList<Incidencia> lista = new ArrayList();
-            lista = (ArrayList<Incidencia>) gdao.get("Incidencia where equipo.idEquipo ="+idHistorico);
+            lista = (ArrayList<Incidencia>) gdao.get("Incidencia where equipo.idEquipo =" + idHistorico);
             String prueba;
             String representacionJSON = gson.toJson(lista);
             // System.out.print(representacionJSON);
             //response.setCharacterEncoding("UTF-8");
             response.getWriter().write(representacionJSON);
-            
+
+        } else if (request.getParameter("newpedido") != null) {
+            String json = request.getParameter("newpedido");
+            Incidencia incidencia = gson.fromJson(json, Incidencia.class);
+            HttpSession session = request.getSession();
+            Usuario usuario = (Usuario) session.getAttribute("usuario");
+            Date fecha = new Date();
+            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+
+            incidencia.setCreateDate(timestamp);
+            incidencia.setPrestatario(usuario.getPrestatarios());
+            gdao.add(incidencia);
+
         }
-        
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -138,4 +151,3 @@ public class ControlIncidencia extends HttpServlet {
     }// </editor-fold>
 
 }
-

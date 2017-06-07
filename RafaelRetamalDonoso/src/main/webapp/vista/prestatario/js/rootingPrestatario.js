@@ -9,11 +9,16 @@ app.config(function ($routeProvider) {
             .when("/", {
                 templateUrl: "vista/main.jsp"
             })
+            .when("/equipo", {
+                templateUrl: "vista/equipo.jsp",
+                controller: "equipoCtrl"
+            })
             .when("/usuario", {
                 templateUrl: "vista/usuario.jsp",
                 controller: "usuarioCtrl"
             });
 });
+
 toastr.options = {
     "closeButton": false,
     "debug": false,

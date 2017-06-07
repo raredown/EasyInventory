@@ -32,9 +32,11 @@
                         <li class="divider"></li>
                         <li><a href="#usuario">Mi usuario <span class="glyphicon glyphicon-user pull-right"></span></a></li>
                         <li class="divider"></li>
+                        <li><a href="#miEquipo">Mis equipos<span class="glyphicon glyphicon-hdd pull-right"></span></a></li>
+                        <li class="divider"></li>
                         <li><a href="#incidencia">Incidencia <span class="glyphicon glyphicon-wrench pull-right"></span></a></li>
                         <li class="divider"></li>
-                        <li><a href="#equipo">Ver equipos<span class="glyphicon glyphicon-hdd pull-right"></span></a></li>
+                        <li><a href="#equipo">Ver equipos libres<span class="glyphicon glyphicon-hdd pull-right"></span></a></li>
                         <li class="divider"></li>
                         <li><a href="#">Desconectar <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
                     </ul>

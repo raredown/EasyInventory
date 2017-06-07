@@ -60,6 +60,15 @@ public class ControlEquipo extends HttpServlet {
             equipo.setCategoria(null);
             gdao.delete(equipo);
         }
+        else if (request.getParameter("getEquiposLibres") != null) {
+            ArrayList<Equipo> lista = new ArrayList();
+            lista = (ArrayList<Equipo>) gdao.get("Equipo where idPrestatario=null");
+            String representacionJSON = gson.toJson(lista);
+            // System.out.print(representacionJSON);
+            //response.setCharacterEncoding("UTF-8");
+            response.getWriter().write(representacionJSON);
+            
+        }
 
     }
 
