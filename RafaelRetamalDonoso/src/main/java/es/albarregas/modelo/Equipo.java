@@ -6,10 +6,13 @@
 package es.albarregas.modelo;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -19,12 +22,49 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "equipo")
 public class Equipo implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idEquipo;
     private String demoninacion;
     private String descripcion;
     private String numeroSerie;
+
+    @OneToOne(cascade = {CascadeType.PERSIST})
+    @JoinColumn(name = "idMarca")
+    private Marca marca = new Marca();
+
+    @OneToOne(cascade = {CascadeType.PERSIST})
+    @JoinColumn(name = "idCategoria")
+    private Categoria categoria = new Categoria();
+    
+    @OneToOne(cascade = {CascadeType.PERSIST})
+    @JoinColumn(name = "idPrestatario")
+    private Prestatarios prestatario = new Prestatarios();
+
+    public Prestatarios getPrestatario() {
+        return prestatario;
+    }
+
+    public void setPrestatario(Prestatarios prestatario) {
+        this.prestatario = prestatario;
+    }
+
+    public Marca getMarca() {
+        return marca;
+    }
+
+    public void setMarca(Marca marca) {
+        this.marca = marca;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
 
     public int getIdEquipo() {
         return idEquipo;
@@ -57,6 +97,5 @@ public class Equipo implements Serializable {
     public void setNumeroSerie(String numeroSerie) {
         this.numeroSerie = numeroSerie;
     }
-    
-    
+
 }

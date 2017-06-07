@@ -15,8 +15,10 @@
         <!--        <mapping class="es.albarregas.modelo.Libro"/>-->
         <mapping class="es.albarregas.modelo.Usuario"/>
         <mapping class="es.albarregas.modelo.Prestatarios"/>
-        <mapping class="es.albarregas.modelo.Equipo"/>
+        
         <mapping class="es.albarregas.modelo.Marca"/>
         <mapping class="es.albarregas.modelo.Categoria"/>
+        <mapping class="es.albarregas.modelo.Equipo"/>
+        <mapping class="es.albarregas.modelo.Incidencia"/>
     </session-factory>
 </hibernate-configuration>

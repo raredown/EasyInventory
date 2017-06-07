@@ -4,44 +4,41 @@
  * and open the template in the editor.
  */
 
-app.controller("marcaCtrl", function ($scope) {
-    //Para testeos 
-    $scope.marcas = [
-        {idMarca: 300, nombre: 'hp'},
-        {idMarca: 301, nombre: 'moster'},
-        {idMarca: 302, nombre: 'asus'}
+app.controller("categoriaCtrl", function ($scope) {
+    $scope.categorias = [
+        {idCategoria: 300, nombre: 'ordenador'},
+        {idCategoria: 301, nombre: 'movil'},
+        {idCategoria: 302, nombre: 'portatil'}
     ];
-    $scope.modMarca = {idMarca: 0, nombre: ''};
-    $scope.newMarca = {idMarca: 0, nombre: ''};
-
-    $scope.addMarca = function () {
-        //$scope.marcas.push($scope.newMarca);
+    $scope.newCategoria = {idCategoria: 0, nombre: ''};
+    $scope.addCategoria = function () {
+       // $scope.categorias.push($scope.newCategoria);
         var parametros = {
-            "marquita": angular.toJson($scope.newMarca)
+            "newcategoria": angular.toJson($scope.newCategoria)
         };
         $.ajax({
             data: parametros,
-            url: '../../ControlMarca',
+            url: '../../ControlCategoria',
             type: 'post',
             beforeSend: function () {
 
             },
             success: function (response) {
-                Command: toastr["success"]("Se han añadido correctamente!");
+                Command: toastr["success"]("Se ha añadido correctamente!");
 
             }, error: function (jqXHR, textStatus, errorThrown) {
                 Command: toastr["error"]("No se ha podido añadir!");
 
             }
         });
-        $scope.newMarca = {idMarca: 0, nombre: ''};
+        $scope.newCategoria = {idCategoria: 0, nombre: ''};
 
     };
-    $scope.getMarcas = function () {
+    $scope.getCategoria = function () {
         $.ajax({
-            data: {"getMarcas": "toda"},
+            data: {"getCategoria": "toda"},
             async: false,
-            url: '../../ControlMarca',
+            url: '../../ControlCategoria',
             type: 'post',
             dataType: "json",
             beforeSend: function () {
@@ -49,12 +46,12 @@ app.controller("marcaCtrl", function ($scope) {
             },
             success: function (response) {
                 // alert("Inicialidad:"+$scope.marcas);
-                $scope.marcas = response;
+                $scope.categorias = response;
                 // alert(response);
-                Command: toastr["success"]("Se han cargado las marcas correctamente!");
+                Command: toastr["success"]("Se han cargado las categoria correctamente!");
 
             }, error: function (jqXHR, textStatus, errorThrown) {
-                Command: toastr["error"]("No se ha podido cargar!");
+                Command: toastr["error"]("No se ha podido cargar las categorias!");
 
             }
         });
@@ -62,24 +59,24 @@ app.controller("marcaCtrl", function ($scope) {
     };
 
     //updateMarca
-    $scope.elecionMarca = function (id) {
+    $scope.elecionCategoria = function (id) {
 
-        for (i = 0; i < $scope.marcas.length; i++) {
-            if ($scope.marcas[i].idMarca == id) {
-                $scope.modMarca = $scope.marcas[i];
+        for (i = 0; i < $scope.categorias.length; i++) {
+            if ($scope.categorias[i].idCategoria == id) {
+                $scope.modCategoria = $scope.categorias[i];
             }
 
         }
 
     };
-    $scope.updateMarca = function () {
+    $scope.updateCategoria = function () {
 
         var parametros = {
-            "marquita": angular.toJson($scope.modMarca)
+            "newcategoria": angular.toJson($scope.modCategoria)
         };
         $.ajax({
             data: parametros,
-            url: '../../ControlMarca',
+            url: '../../ControlCategoria',
             type: 'post',
             beforeSend: function () {
 
@@ -87,33 +84,7 @@ app.controller("marcaCtrl", function ($scope) {
             success: function (response) {
                 Command: toastr["success"]("Se ha actualizado correctamente!");
 
-                $scope.modMarca = {idMarca: 0, nombre: ''};
-            }, error: function (jqXHR, textStatus, errorThrown) {
-                Command: toastr["error"]("No se ha podido borrar por que ahi un equipo que tiene esta marca!");
-
-            }
-        });
-
-
-    };
-
-    $scope.deleteMarca = function () {
-
-        var parametros = {
-            "borrarMarca": angular.toJson($scope.modMarca)
-        };
-        $.ajax({
-            data: parametros,
-            url: '../../ControlMarca',
-            type: 'post',
-            beforeSend: function () {
-
-            },
-            success: function (response) {
-                window.location.href = '';
-                Command: toastr["success"]("Se ha borrado correctamente!");
-
-                $scope.modMarca = {idMarca: 0, nombre: ''};
+                $scope.modCategoria = {idCategoria: 0, nombre: ''};
             }, error: function (jqXHR, textStatus, errorThrown) {
                 Command: toastr["error"]("No se ha podido borrar!");
 
@@ -122,8 +93,33 @@ app.controller("marcaCtrl", function ($scope) {
 
 
     };
-    $scope.getMarcas();
 
+    $scope.deleteCategoria = function () {
+
+        var parametros = {
+            "borrarCategoria": angular.toJson($scope.modCategoria)
+        };
+        $.ajax({
+            data: parametros,
+            url: '../../ControlCategoria',
+            type: 'post',
+            beforeSend: function () {
+
+            },
+            success: function (response) {
+                window.location.href = '';
+                Command: toastr["success"]("Se ha borrado correctamente!");
+
+                $scope.modCategoria = {idCategoria: 0, nombre: ''};
+            }, error: function (jqXHR, textStatus, errorThrown) {
+                Command: toastr["error"]("No se ha podido borrar por que ahi un equipo que tiene esta categoria!");
+
+            }
+        });
+
+
+    };
+    $scope.getCategoria();
     $(document).ready(function () {
         // $scope.getMarcas();
         $('#example').DataTable({
@@ -153,5 +149,4 @@ app.controller("marcaCtrl", function ($scope) {
 
             }});
     });
-
 });

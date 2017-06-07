@@ -117,12 +117,14 @@ public class Usuario implements Serializable {
         usuario.setPasword(this.pasword);
         usuario.setUsername(this.username);
         usuario.setIdUsuarios(this.idUsuarios);
+        usuario.setTipo("prestatarios");
         Prestatarios aquiprestatario = new Prestatarios();
         aquiprestatario = this.prestatarios;
         usuario.setPrestatarios(aquiprestatario);
         FacesContext context = FacesContext.getCurrentInstance();
         try {
             gdao.add(usuario);
+            loggin();
 
             try {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("vista/administrador/panel.jsp");
@@ -153,7 +155,11 @@ public class Usuario implements Serializable {
                     HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
                     HttpSession session = request.getSession();
                     context.getExternalContext().getSessionMap().put("usuario", usuario);
-                    FacesContext.getCurrentInstance().getExternalContext().redirect("vista/administrador/panel.jsp");
+                    if ("prestatarios".equals(usuario.getTipo())) {
+                        FacesContext.getCurrentInstance().getExternalContext().redirect("vista/prestatario/panel.jsp");
+                    } else {
+                        FacesContext.getCurrentInstance().getExternalContext().redirect("vista/administrador/panel.jsp");
+                    }
                 } catch (IOException ex) {
                     Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
                 }
