@@ -1,5 +1,9 @@
 # ProyectoFinal
+Para las noticias 
+https://www.lasportadas.es/get_widget.php
 
+Para twitter
+http://elblogdebearodriguez.blogspot.com.es/2016/02/como-modificar-widget-twitter.html
 Alerta 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
