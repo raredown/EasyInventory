@@ -13,12 +13,20 @@ app.config(function ($routeProvider) {
                 templateUrl: "vista/equipo.jsp",
                 controller: "equipoCtrl"
             })
+            .when("/misequipo", {
+                templateUrl: "vista/miequipo.jsp",
+                controller: "miEquipoCtrl"
+            })
+            .when("/incidencia", {
+                templateUrl: "vista/incidencias.jsp",
+                controller: "incidenciasCtrl"
+            })
             .when("/usuario", {
                 templateUrl: "vista/usuario.jsp",
                 controller: "usuarioCtrl"
             });
-});
 
+});
 toastr.options = {
     "closeButton": false,
     "debug": false,

@@ -10,6 +10,7 @@ import es.albarregas.dao.IGenericoDAO;
 import es.albarregas.daofactory.DAOFactory;
 import es.albarregas.modelo.Categoria;
 import es.albarregas.modelo.Equipo;
+import es.albarregas.modelo.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -63,6 +65,16 @@ public class ControlEquipo extends HttpServlet {
         else if (request.getParameter("getEquiposLibres") != null) {
             ArrayList<Equipo> lista = new ArrayList();
             lista = (ArrayList<Equipo>) gdao.get("Equipo where idPrestatario=null");
+            String representacionJSON = gson.toJson(lista);
+            // System.out.print(representacionJSON);
+            //response.setCharacterEncoding("UTF-8");
+            response.getWriter().write(representacionJSON);
+            
+        }   else if (request.getParameter("getEquiposUsuario") != null) {
+            HttpSession session = request.getSession();
+            Usuario usuario = (Usuario) session.getAttribute("usuario");
+            ArrayList<Equipo> lista = new ArrayList();
+            lista = (ArrayList<Equipo>) gdao.get("Equipo where idPrestatario="+usuario.getPrestatarios().getIdPrestatarios());
             String representacionJSON = gson.toJson(lista);
             // System.out.print(representacionJSON);
             //response.setCharacterEncoding("UTF-8");

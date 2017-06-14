@@ -15,6 +15,8 @@
         <script src="js/rootingPrestatario.js"></script>
         <script src="js/controladores/crtlUsuario.js"></script>
         <script src="js/controladores/crtlEquipos.js"></script>
+        <script src="js/controladores/crtlMiEquipo.js"></script>
+        <script src="js/controladores/crltIncidencia.js"></script>
 
         <link href="css/datatable.css" rel="stylesheet"> 
         <title>JSP Page</title>
@@ -33,7 +35,7 @@
                         <li class="divider"></li>
                         <li><a href="#usuario">Mi usuario <span class="glyphicon glyphicon-user pull-right"></span></a></li>
                         <li class="divider"></li>
-                        <li><a href="#miEquipo">Mis equipos<span class="glyphicon glyphicon-hdd pull-right"></span></a></li>
+                        <li><a href="#misequipo">Mis equipos<span class="glyphicon glyphicon-hdd pull-right"></span></a></li>
                         <li class="divider"></li>
                         <li><a href="#incidencia">Incidencia <span class="glyphicon glyphicon-wrench pull-right"></span></a></li>
                         <li class="divider"></li>

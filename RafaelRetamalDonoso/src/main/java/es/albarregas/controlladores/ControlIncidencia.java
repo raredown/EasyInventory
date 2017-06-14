@@ -107,6 +107,17 @@ public class ControlIncidencia extends HttpServlet {
             incidencia.setPrestatario(usuario.getPrestatarios());
             gdao.add(incidencia);
 
+        } else if (request.getParameter("getIncidenciaUsuario") != null) {
+            HttpSession session = request.getSession();
+            Usuario usuario = (Usuario) session.getAttribute("usuario");
+            ArrayList<Incidencia> lista = new ArrayList();
+            lista = (ArrayList<Incidencia>) gdao.get("Incidencia where idPrestatario="+usuario.getPrestatarios().getIdPrestatarios());
+            String prueba;
+            String representacionJSON = gson.toJson(lista);
+            // System.out.print(representacionJSON);
+            //response.setCharacterEncoding("UTF-8");
+            response.getWriter().write(representacionJSON);
+
         }
 
     }
