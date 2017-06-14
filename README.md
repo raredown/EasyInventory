@@ -2,6 +2,12 @@
 Para las noticias 
 https://www.lasportadas.es/get_widget.php
 
+<a class="twitter-timeline"
+  href="https://twitter.com/TwitterDev"
+  data-chrome="nofooter noborders">
+Tweets by @TwitterDev
+</a>
+
 Para twitter
 http://elblogdebearodriguez.blogspot.com.es/2016/02/como-modificar-widget-twitter.html
 Alerta 
