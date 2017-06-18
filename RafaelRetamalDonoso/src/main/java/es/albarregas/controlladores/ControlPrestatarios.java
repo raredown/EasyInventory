@@ -8,10 +8,8 @@ package es.albarregas.controlladores;
 import com.google.gson.Gson;
 import es.albarregas.dao.IGenericoDAO;
 import es.albarregas.daofactory.DAOFactory;
-import es.albarregas.modelo.Categoria;
 import es.albarregas.modelo.Prestatarios;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,8 +28,8 @@ public class ControlPrestatarios extends HttpServlet {
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
-     * @param request servlet request
-     * @param response servlet response
+     * @param request servlet request me llega el parametro getPrestatarios
+     * @param response servlet response devuelvo el prestatario en json
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
@@ -45,8 +43,6 @@ public class ControlPrestatarios extends HttpServlet {
             lista = (ArrayList<Prestatarios>) gdao.get("Prestatarios");
             String prueba;
             String representacionJSON = gson.toJson(lista);
-            // System.out.print(representacionJSON);
-            //response.setCharacterEncoding("UTF-8");
             response.getWriter().write(representacionJSON);
 
         }

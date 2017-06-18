@@ -10,7 +10,6 @@ import es.albarregas.dao.IGenericoDAO;
 import es.albarregas.daofactory.DAOFactory;
 import es.albarregas.modelo.Marca;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,7 +28,7 @@ public class ControlMarca extends HttpServlet {
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
-     * @param request servlet request
+     * @param request servlet request esto es lo mismo que categoría pero para marcas
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
@@ -39,7 +38,6 @@ public class ControlMarca extends HttpServlet {
         Gson gson = new Gson();
         DAOFactory daof = DAOFactory.getDAOFactory();
         IGenericoDAO gdao = daof.getGenericoDAO();
-        // String json = "{\"idMarca\":46,\"nombre\":\"Miguel\"}";
         String json = request.getParameter("marquita");
         //Añadir una marca nueva
         if (json != null) {

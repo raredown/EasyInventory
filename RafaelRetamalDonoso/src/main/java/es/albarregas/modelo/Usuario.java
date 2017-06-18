@@ -10,7 +10,6 @@ import es.albarregas.daofactory.DAOFactory;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
@@ -26,7 +25,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -101,13 +99,9 @@ public class Usuario implements Serializable {
         this.tipo = tipo;
     }
 
-//    public int getIdPrestatario() {
-//        return idPrestatario;
-//    }
-//
-//    public void setIdPrestatario(int idPrestatario) {
-//        this.idPrestatario = idPrestatario;
-//    }
+    /*
+    Metodo para añadir usuario desde jsf
+    */
     public String add() {
 
         DAOFactory daof = DAOFactory.getDAOFactory();
@@ -138,7 +132,9 @@ public class Usuario implements Serializable {
         return "success";
 
     }
-
+/*
+    Metodo para comprobar si un usuario es correcto y meterlo en sesion y hacer loggin
+    */
     public void loggin() {
         DAOFactory daof = DAOFactory.getDAOFactory();
 //        IPersonaDAO adao = daof.getPersonaDAO();

@@ -32,8 +32,8 @@ public class ControlEquipo extends HttpServlet {
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
-     * @param request servlet request
-     * @param response servlet response
+     * @param request servlet request depende el request haremos unas cosa o otra
+     * @param response servlet response responderemos algunas veces con un json
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
@@ -42,35 +42,40 @@ public class ControlEquipo extends HttpServlet {
         Gson gson = new Gson();
         DAOFactory daof = DAOFactory.getDAOFactory();
         IGenericoDAO gdao = daof.getGenericoDAO();
+        //En este apartado añadiremos nuevos equipos
         if (request.getParameter("equipo") != null) {
+            //Traaformamos el parametro en un bean equipo y lo añadimos a la bbdd
             String json = request.getParameter("equipo");
             Equipo equipo = gson.fromJson(json, Equipo.class);
             gdao.add(equipo);
 
-        }else if (request.getParameter("getEquipos") != null) {
+        }
+        //En este parametro nos traeremos todos los equipo de la bbdd y lo devolveremos en un json
+        else if (request.getParameter("getEquipos") != null) {        
             ArrayList<Equipo> lista = new ArrayList();
             lista = (ArrayList<Equipo>) gdao.get("Equipo");
             String representacionJSON = gson.toJson(lista);
-            // System.out.print(representacionJSON);
-            //response.setCharacterEncoding("UTF-8");
             response.getWriter().write(representacionJSON);
             
-        }else if (request.getParameter("borrarEquipo") != null) {
+        }
+        // En este apartado le pasamos un equipo y lo borramos de la base de datos
+        else if (request.getParameter("borrarEquipo") != null) {
             String json = request.getParameter("borrarEquipo");
             Equipo equipo = gson.fromJson(json, Equipo.class);
             equipo.setMarca(null);
             equipo.setCategoria(null);
             gdao.delete(equipo);
         }
+        //Aqui devolvemos todos los equipos que esten libres
         else if (request.getParameter("getEquiposLibres") != null) {
             ArrayList<Equipo> lista = new ArrayList();
             lista = (ArrayList<Equipo>) gdao.get("Equipo where idPrestatario=null");
             String representacionJSON = gson.toJson(lista);
-            // System.out.print(representacionJSON);
-            //response.setCharacterEncoding("UTF-8");
             response.getWriter().write(representacionJSON);
             
-        }   else if (request.getParameter("getEquiposUsuario") != null) {
+        } 
+        //Aqui devolvemos todos los equipo de un usuario
+        else if (request.getParameter("getEquiposUsuario") != null) {
             HttpSession session = request.getSession();
             Usuario usuario = (Usuario) session.getAttribute("usuario");
             ArrayList<Equipo> lista = new ArrayList();

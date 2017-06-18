@@ -29,8 +29,8 @@ public class ControlUsuarioAdmin extends HttpServlet {
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
-     * @param request servlet request
-     * @param response servlet response
+     * @param request servlet request depende el request haremos unas cosa o otra
+     * @param response servlet response responderemos algunas veces con un json
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
@@ -39,22 +39,34 @@ public class ControlUsuarioAdmin extends HttpServlet {
         Gson gson = new Gson();
         DAOFactory daof = DAOFactory.getDAOFactory();
         IGenericoDAO gdao = daof.getGenericoDAO();
-          if (request.getParameter("newusuario") != null) {
+        //Este apartado es para añadir un nuevo usuario
+        if (request.getParameter("newusuario") != null) {
             String json = request.getParameter("newusuario");
             Usuario usuario = gson.fromJson(json, Usuario.class);
             gdao.add(usuario);
 
-        }else if(request.getParameter("getMiUsuario") != null){
+        } 
+        //Cojo mi usuario y lo paso a un json
+        else if (request.getParameter("getMiUsuario") != null) {
             HttpSession session = request.getSession();
             Usuario usuario = (Usuario) session.getAttribute("usuario");
             String representacionJSON = gson.toJson(usuario);
             response.getWriter().write(representacionJSON);
-        } else if(request.getParameter("modUsuario") != null){
+        } 
+        //Para modificar mi usuario
+        else if (request.getParameter("modUsuario") != null) {
             HttpSession session = request.getSession();
             String json = request.getParameter("modUsuario");
             Usuario usuario = gson.fromJson(json, Usuario.class);
             gdao.add(usuario);
             session.setAttribute("usuario", usuario);
+        } 
+        //Cierro sesion y redirigo al index
+        else if (request.getParameter("salir") != null) {
+            HttpSession sesion = request.getSession();
+            sesion.invalidate();
+            response.sendRedirect("/RafaelRetamalDonoso/");
+
         }
 
     }
